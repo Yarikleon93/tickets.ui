@@ -1,0 +1,64 @@
+@import 'variables';
+
+table {
+  margin-right: 0.9em;
+  font-size: 18px;
+  font-family: 'Montserrat';
+
+  tr {
+    vertical-align: top;
+  }
+
+  td {
+    padding: 0 1em 1em 0;
+  }
+
+  td:first-child {
+    font-weight: 600;
+    color: $base-color;
+  }
+
+  tr:nth-child(3) {
+    td:nth-child(2) {
+      font-style: italic;
+      font-weight: 300;
+    }
+  }
+}
+
+.loading {
+  td {
+    position: relative;
+  }
+  td:last-child::after {
+    display: block;
+    position: absolute;
+    content: '';
+    top: 0;
+    width: 100%;
+    height: 75%;
+    background-color: $skeleton-color;
+  }
+}
+
+.desktop-v {
+  display: table-cell;
+}
+
+.mobile-v {
+  display: none;
+}
+
+@media (max-width: $desktop) {
+  .desktop-v {
+    display: none;
+  }
+
+  .mobile-v {
+    display: table-row;
+    td:first-child {
+      color: white;
+      font-weight: normal;
+    }
+  }
+}

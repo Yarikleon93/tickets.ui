@@ -1,0 +1,24 @@
+<table [class.loading]="!movie">
+  <tr>
+    <td>{{ 'MOVIE_DETAIL.TYPE' | translate }}:</td>
+    <td>{{movie?.type}}</td>
+  </tr>
+  <tr>
+    <td>{{ 'MOVIE_DETAIL.DURATION' | translate }}:</td>
+    <td>{{ movie?.duration }} {{ 'MOVIE_DETAIL.MIN' | translate }}</td>
+  </tr>
+  <tr>
+    <td>{{ 'MOVIE_DETAIL.DESCRIPTION' | translate }}:</td>
+    <td class="desktop-v">{{movie?.description}}</td>
+  </tr>
+  <tr class="mobile-v">
+    <td colspan="2">{{movie?.description}}</td>
+  </tr>
+  <tr>
+    <td>{{ 'MOVIE_DETAIL.DATE' | translate }}:</td>
+    <td>
+      {{ 'MOVIE_DETAIL.FROM' | translate }} {{ movie && (movie.startRental | localizedDate) }} {{ 'MOVIE_DETAIL.TILL' |
+      translate }} {{ movie && (movie.endRental | localizedDate) }}
+    </td>
+  </tr>
+</table>

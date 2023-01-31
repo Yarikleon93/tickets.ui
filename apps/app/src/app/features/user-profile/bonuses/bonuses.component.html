@@ -1,0 +1,7 @@
+<div>
+  <h1><span> {{ 'PROFILE.BONUSES.YOU_HAVE' | translate}} </span>
+    <span class="price">{{userBonuse === null ? 0 : userBonuse}}</span>
+    <span>{{ 'PROFILE.BONUSES.SCORE' | translate}}</span>
+  </h1>
+</div>
+<app-bonuse-card *ngFor="let bonuse of bonuses" [bonuse]="bonuse" ></app-bonuse-card>

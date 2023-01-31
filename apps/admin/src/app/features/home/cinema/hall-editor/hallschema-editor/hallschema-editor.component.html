@@ -1,0 +1,28 @@
+<div class="placeholder" *ngIf="!(rowsAmount && colsAmount); else grid">
+  <img src="assets/images/halleditor.png" class="placeholder" alt="">
+  <span class="text">
+    <span>{{ 'ADMIN.CINEMA.EDITOR.SCHEMA_PLACEHOLDER' | translate }}</span><br>
+    <span>&#171;{{ 'ADMIN.CINEMA.EDITOR.GENERATE_SCHEMA' | translate }}&#187;</span>
+  </span>
+</div>
+<ng-template #grid>
+  <div class="wrapper">
+    <img class="screen" src="assets/images/screen.svg" alt="">
+    <div class="grid" [ngStyle]="gridStyles" [class.not-allowed]="!isMutable">
+      <ng-template ngFor let-i [ngForOf]="range(rowsAmount)">
+        <div class="row-number">{{rowNumbers[i] || ''}}</div>
+        <ng-template ngFor let-j [ngForOf]="range(colsAmount)" [ngForTrackBy]="trackBySeat(i)">
+          <div class="seat" [@toogle]="seatsData[i][j].isDisabled? 'off' : 'on'">
+            <input (click)="change(i, j)" [id]="seatId(i,j)" type="checkbox" />
+            <label [for]="seatId(i,j)">
+              <span class="place">
+                {{ seatsData[i][j].place }}
+              </span>
+              <img class="img" src="assets/images/ui-icons/seats-delete.svg" alt="">
+            </label>
+          </div>
+        </ng-template>
+      </ng-template>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,16 @@
+@import "variables";
+@import "mixins";
+
+:host {
+  @include flex-col;
+  height: 100%;
+  width: 240px;
+  padding-right: 30px;
+}
+
+a {
+  padding: 0.3em 0;
+  margin: 1em 0 0.7em 0;
+  font-weight: 600;
+  font-size: $fsize-standart;
+}

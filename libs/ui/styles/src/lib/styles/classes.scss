@@ -1,0 +1,26 @@
+@import "variables";
+
+.adaptive-page-padding {
+  padding: 0 20%;
+}
+
+.admin-adaptive-page-padding {
+  padding: 0 20% 0 10%;
+}
+
+@media (max-width: $landscape) {
+  .adaptive-page-padding {
+    padding: 0 10%;
+  }
+
+  .admin-adaptive-page-padding {
+    padding: 0 10% 0 5%;
+  }
+}
+
+@media (max-width: $ipad) {
+  .adaptive-page-padding,
+  .admin-adaptive-page-padding {
+    padding: 0 5%;
+  }
+}

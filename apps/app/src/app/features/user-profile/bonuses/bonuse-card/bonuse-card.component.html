@@ -1,0 +1,9 @@
+<img [src]="imageService.getPath(bonuse.image)" alt="">
+<span class="description"><span>{{ 'PROFILE.BONUSES.EXCHANGE_POINTS' | translate}} {{bonuse.name}}
+    {{ 'PROFILE.BONUSES.AT_CINEMA' | translate}}</span></span>
+<div class="bonus-wrap">
+  <div>
+    <span class="total">{{bonuse.total}}</span>
+    <span class="bonuse">{{ 'PROFILE.BONUSES.SCORE' | translate}}</span>
+  </div>
+</div>

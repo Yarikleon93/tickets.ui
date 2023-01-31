@@ -1,0 +1,28 @@
+<app-circular-loader *ngIf="!movie && isLoading; else content" class="loader"></app-circular-loader>
+<ng-template #content>
+  <div class="player-container" *ngIf="movie?.trailerYTvideoId">
+    <app-video-player [videoId]="movie.trailerYTvideoId" [autoplay]="playerHasAutoplay"></app-video-player>
+  </div>
+  <div class="detail-container">
+    <h1 class="movie-title">{{movie?.name}}</h1>
+    <button *ngIf="movie?.sessions.length; else sessionsNotFound" class="kino-btn-primary"
+      (click)='isDatePickerOpened = !isDatePickerOpened'>{{ 'MOVIE_DETAIL.BUY_TICKET' |
+      translate }}</button>
+    <ng-template #sessionsNotFound>
+      <div class="session-not-found">*{{ "MOVIE_DETAIL.SESSIONS_NOTFOUND" | translate }}</div>
+    </ng-template>
+    <div class="schedule-wrapper" *ngIf="isDatePickerOpened && movie">
+      <app-date-picker [sessions]="movie.sessions" [amountDays]="7" (daySelect)="onScheduleDay($event)" [startDay]="0">
+      </app-date-picker>
+      <h2>{{ 'MOVIE_DETAIL.SCHEDULE_OF_MOVIES' | translate }} {{ 'MOVIE_DETAIL.CITY.KIYV' | translate }}</h2>
+      <app-session-picker [movie]="selectedMovie" (sessionSelect)="selectedSession = $event"></app-session-picker>
+      <app-order-tickets *ngIf="selectedSession" [session]="selectedSession"></app-order-tickets>
+    </div>
+    <h3 class="description-title">{{ 'MOVIE_DETAIL.DESCRIPTION' | translate }}</h3>
+    <div class="description">
+      <app-movie-info [movie]="movie">
+      </app-movie-info>
+      <img [src]="imageService.getPath(movie?.frameUrl)" alt="" class="movie-frame">
+    </div>
+  </div>
+</ng-template>

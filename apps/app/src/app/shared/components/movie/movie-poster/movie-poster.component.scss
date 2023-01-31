@@ -1,0 +1,41 @@
+@import 'mixins';
+@import 'variables';
+
+:host {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    background-color: $skeleton-color;
+  }
+  .detail {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    @include full-flex-centr;
+    flex-direction: column;
+    width: 110%;
+    padding: 16px;
+    padding-right: calc(10% + 16px);
+    background-color: black;
+    transform: translateY(101%);
+    transition: 0.3s ease-in-out;
+    span {
+      width: 100%;
+      text-align: left;
+      &:first-child {
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: normal;
+      }
+    }
+  }
+
+  &:hover {
+    .detail {
+      transform: translateY(1px);
+    }
+  }
+}

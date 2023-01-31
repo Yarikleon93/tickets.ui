@@ -1,0 +1,256 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-bottom: 1px solid #303030;
+  box-sizing: content-box;
+}
+
+:host,
+.slide {
+  width: 100%;
+  height: calc(100vh - #{$header-height});
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  transition: opacity 0.2s;
+  .background {
+    position: absolute;
+    height: 100%;
+    width: 63.66%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    .shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 2;
+      background: radial-gradient(
+          circle at top left,
+          transparent 50%,
+          $bg-color 80%
+        ),
+        radial-gradient(circle at bottom left, $bg-color, transparent 25%),
+        linear-gradient(150deg, transparent 80%, $bg-color 90%, $bg-color),
+        linear-gradient(170deg, transparent 80%, $bg-color 90%, $bg-color),
+        linear-gradient(90deg, transparent 90%, $bg-color);
+    }
+
+    img {
+      transition: opacity 0.4s;
+      z-index: 1;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+  .info-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    height: calc(100% - 20px);
+    margin-right: 15.5%;
+    padding-right: 20px;
+    z-index: 2;
+    .info-container {
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-color: #f0f0f015 transparent;
+      scrollbar-width: thin;
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+      &::-webkit-scrollbar-track-piece {
+        background-color: transparent;
+      }
+      &::-webkit-scrollbar-thumb:vertical {
+        border-radius: 20px;
+        background-color: #f0f0f015;
+      }
+      .movie-title {
+        display: block;
+        width: 100%;
+        margin-right: 0.25em;
+        margin-top: 0.5em;
+        @include big-title;
+        margin-left: 0;
+        margin-bottom: 0.3em;
+      }
+    }
+    .btn-container {
+      display: flex;
+      width: 100%;
+      padding: 20px 0 40px;
+      button {
+        display: flex;
+        justify-content: center;
+        margin-left: 2em;
+        padding: 0 20px;
+        flex-grow: 1;
+        min-width: 280px;
+      }
+    }
+  }
+}
+
+nav {
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  bottom: 40px;
+  left: 20px;
+  min-width: 125px;
+  width: 8%;
+  padding-right: 20px;
+}
+
+nav > button {
+  height: 32px;
+  width: 32px;
+  margin-left: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  filter: drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6))
+    drop-shadow(0px 2px 16px rgba(0, 0, 0, 0.8));
+  opacity: 0.5;
+  &::after {
+    display: block;
+    content: '';
+    width: 12px;
+    height: 12px;
+    border: 3px solid white;
+    border-bottom: 0;
+    border-left: 0;
+  }
+}
+
+nav > button:active {
+  transition: 0.1s;
+  &::after {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+nav > .left::after {
+  transform: rotate(45deg) scale(-1);
+}
+nav > .right::after {
+  transform: rotate(45deg);
+}
+
+@media (max-width: $middle-screen) {
+  .slide {
+    .info-wrapper {
+      margin-right: 5%;
+      .info-container {
+        .movie-title {
+          font-size: 80px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $small-screen) {
+  .slide {
+    .info-wrapper {
+      margin-right: 0;
+      .info-container {
+        .movie-title {
+          font-size: 80px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $desktop) {
+  .slide {
+    .info-wrapper {
+      .info-container {
+        .movie-title {
+          font-size: 60px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $desktop) {
+  .slide {
+    .background {
+      width: 100%;
+      .shadow {
+        height: 80%;
+        background: linear-gradient(to bottom, $bg-color 2.5%, transparent),
+          linear-gradient(to top, $bg-color 2.5%, transparent);
+      }
+      img {
+        position: absolute;
+        height: 80%;
+      }
+    }
+    .info-wrapper {
+      margin-right: auto;
+      margin-left: auto;
+      .info-container {
+        .movie-title {
+          font-size: 64px;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $ipad) {
+  .slide {
+    .info-wrapper {
+      width: 100%;
+      padding-left: 5%;
+      margin: 0;
+      margin-bottom: 5vh;
+      .info-container {
+        padding-top: 20px;
+        .movie-title {
+          font-size: 54px;
+        }
+        p {
+          padding: 30px;
+        }
+      }
+      .btn-container {
+        flex-direction: column;
+        align-items: center;
+        > button {
+          margin: 8px 0;
+          width: 300px !important;
+        }
+      }
+    }
+  }
+  nav {
+    width: 75%;
+    top: 5px;
+    left: 12.5%;
+    bottom: auto;
+  }
+}

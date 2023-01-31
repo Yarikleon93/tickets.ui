@@ -1,0 +1,110 @@
+@import 'global';
+@import 'elements';
+:host {
+  display: block;
+  width: 100%;
+  padding: 20px 10% 0 8%;
+}
+.navigation-desk {
+  margin-bottom: 20px;
+  margin-top: -10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .links a:first-child {
+    margin-right: 120px;
+  }
+  .links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    a {
+      margin-right: 40px;
+      display: flex;
+      img {
+        margin: -2px 6px 0 0;
+      }
+    }
+  }
+  .kino-btn-add {
+    padding: 6px 25px;
+    min-width: 12em;
+    white-space: normal;
+    width: min-content;
+    height: min-content;
+    margin-top: 10px;
+  }
+}
+
+.navigation-mob {
+  position: relative;
+  width: 20em;
+  margin-bottom: 10px;
+  .navigation-list {
+    background: none;
+    appearance: none;
+    width: 320px;
+    height: 56px;
+    border-radius: 4px;
+    line-height: 2;
+    border: solid 2px #979797;
+    option:checked {
+      color: $base-color;
+    }
+    option {
+      font-size: 16px;
+      background-color: $bg-color;
+    }
+  }
+}
+.navigation-mob:hover::after {
+  color: $base-color;
+}
+.navigation-mob::after {
+  content: '\251B';
+  position: absolute;
+  font-size: 25px;
+  top: 0;
+  right: 0;
+  line-height: 1;
+  transform: rotate(45deg);
+  padding: 0.7em;
+  pointer-events: none;
+  -webkit-transition: 0.25s all ease;
+  -o-transition: 0.25s all ease;
+  transition: 0.25s all ease;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  .poster {
+    margin: 10px 0 10px 20px;
+    width: 180px;
+  }
+}
+
+@media (max-width: $desktop) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: $portrait) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  :host {
+    padding: 20px 5% 0;
+  }
+}
+
+@media (max-width: $smartphone) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,13 @@
+<div class="datepicker-wrapper">
+  <button [disabled]="!(offset > 0)" class="slide-btn left" (click)="changeOffset(-1)"></button>
+  <div class="datepicker-container">
+    <label class="date-radio" *ngFor="let day of data | slice:this.offset:this.offset + this.amountDays; index as i"
+      (click)="selectDate(day)" [class.radio-inactive]=!day.isSession>
+      <input type="radio" name="date" [checked]="day === selectedDate">
+      <div class="decorator"></div>
+      <span class="day">{{ day.date | localizedDate:"EEEEEE" | uppercase }}</span>
+      <span class="date">{{ day.date | localizedDate:"dd.MM" | uppercase }}</span>
+    </label>
+  </div>
+  <button [disabled]="data.length - offset <= amountDays" class="slide-btn right" (click)="changeOffset(1)"></button>
+</div>

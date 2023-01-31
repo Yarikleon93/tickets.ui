@@ -1,0 +1,7 @@
+<app-circular-loader *ngIf="!news; else content"></app-circular-loader>
+<ng-template #content>
+  <app-news-article *ngFor="let newsItem of news" [news]="newsItem">
+    <button class="kino-btn readmore-btn" [routerLink]="['/news/' + newsItem.id]">{{'NEWSPAGE.READMORE' |
+      translate}}</button>
+  </app-news-article>
+</ng-template>

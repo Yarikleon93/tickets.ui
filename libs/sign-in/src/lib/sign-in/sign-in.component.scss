@@ -1,0 +1,47 @@
+@import "../../../../ui/styles/src/lib/styles/variables.scss";
+@import "../../../../ui/styles/src/lib/styles/mixins.scss";
+@import "../../../../ui/styles/src/lib/styles/elements.scss";
+
+:host {
+  @include page-content;
+  @include flex-col;
+  align-items: center;
+  padding-top: 60px;
+}
+
+h2 {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  min-width: 280px;
+}
+
+app-input {
+  margin-top: 1.5em;
+}
+
+app-input,
+button {
+  width: 100%;
+}
+
+button {
+  margin: 1em 0;
+}
+
+.error {
+  margin-top: 5px;
+  width: 100%;
+  line-height: 1.75;
+  font-weight: 300;
+  font-style: italic;
+  text-align: left;
+  letter-spacing: normal;
+  color: $attention-color;
+}

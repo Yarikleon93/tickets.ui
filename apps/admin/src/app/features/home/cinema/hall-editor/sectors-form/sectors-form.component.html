@@ -1,0 +1,31 @@
+<h3 class="header">{{ 'ADMIN.CINEMA.EDITOR.CREATING_SECTORS' | translate }}</h3>
+<p class="note">{{ 'ADMIN.CINEMA.EDITOR.PLACEHOLDERS.SECTOR_NOTE' | translate }}</p>
+<div class="form-wrapper">
+  <form class="form" *ngFor="let form of fgManagerPairs; index as i" [formGroup]="form.group" autocomplete="off"
+    (ngSubmit)="addForm()">
+    <app-input class="from-input" [type]="'number'" formControlName="from" [min]="1"
+      [error]="form.manager.hasError('from', 'required') || form.manager.hasError('from', 'less')"
+      [placeholder]="'ADMIN.CINEMA.EDITOR.PLACEHOLDERS.SECTOR_ROW' | translate">
+      {{'ADMIN.CINEMA.EDITOR.SECTOR_FROM' | translate }}
+    </app-input>
+    <app-input class="to-input" [type]="'number'" formControlName="to" [min]="1"
+      [error]="form.manager.hasError('to', 'required') || form.manager.hasError('to', 'less')"
+      [placeholder]="'ADMIN.CINEMA.EDITOR.PLACEHOLDERS.HALL_COLS' | translate">
+      {{'ADMIN.CINEMA.EDITOR.SECTOR_TO' | translate }}
+    </app-input>
+    <app-input class="name-input" [placeholder]="'ADMIN.CINEMA.EDITOR.PLACEHOLDERS.SECTOR_NAME' | translate"
+      [error]="form.manager.hasError('name', 'required') || form.manager.hasError('name', 'maxlength')"
+      formControlName="name">
+      {{'ADMIN.CINEMA.EDITOR.SECTOR_NAME' | translate }}
+    </app-input>
+    <button *ngIf="i === (fgManagerPairs.length - 1); else removeBtn" class="kino-round-btn submit-btn" type="submit"
+      [disabled]="!form.group.valid">
+      <img src="assets/images/ui-icons/icons-add.svg" alt="+">
+    </button>
+    <ng-template #removeBtn>
+      <button class="kino-round-btn remove-btn" type="button" (click)="removeForm(i)">
+        <img src="assets/images/ui-icons/icons-delete.svg" alt="+">
+      </button>
+    </ng-template>
+  </form>
+</div>

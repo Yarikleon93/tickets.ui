@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <img src="assets/images/screen.svg" alt="">
+  <form [formGroup]="form" class="schema">
+    <div class="rows-names">
+      <div *ngFor="let name of rowsList">
+        {{name + 1}}
+      </div>
+    </div>
+    <div class=" seats-container" [ngStyle]="formStyles">
+      <div class="seat" *ngFor="let seat of formSeats.controls; index as i" [ngStyle]="seatsStyles[i]">
+        <input [id]="'seat' + i" type="checkbox" [formControl]="seat" (change)="change()" />
+        <label [for]="'seat' + i">{{seats[i].place}}</label>
+      </div>
+    </div>
+    <div class="rows-names">
+      <div *ngFor="let name of rowsList">
+        {{name + 1}}
+      </div>
+    </div>
+  </form>
+  <div class="tips-container">
+    <div>
+      {{'HALLSCHEMA.FREE' | translate}}
+    </div>
+    <div>
+      {{'HALLSCHEMA.RESERVED' | translate}}
+    </div>
+    <div>
+      {{'HALLSCHEMA.SELECTED' | translate}}
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,29 @@
+<app-header>
+  <a [routerLink]="['/movies/schedule']" [routerLinkActive]="'active-link'" [routerLinkActiveOptions]="{exact: true}">{{
+    'COMMON.HEADER.SCHEDULE' | translate }}</a>
+  <a [routerLink]="['/news']" [routerLinkActive]="'active-link'" [routerLinkActiveOptions]="{exact: true}">{{
+    'COMMON.HEADER.NEWS' | translate }}</a>
+  <a class="profile-menu-desk profile-link" [routerLink]="['/profile']" [routerLinkActive]="'active-profile'">
+    <img class="inactive-profile-icon" src="assets/images/ui-icons/avatar.svg" alt="">
+    <img class="active-profile-icon" src="assets/images/ui-icons/avatar-active.svg" alt="">
+  </a>
+  <app-burger-menu class="profile-menu-mob profile-link"></app-burger-menu>
+</app-header>
+<app-sidebar>
+  <a [routerLink]="['profile/tickets']" [routerLinkActive]="'active-link'" (click)="sidebarService.isOpened = false">
+    {{ 'PROFILE.SETTINGS.TICKETS' | translate}}</a>
+  <a [routerLink]="['profile/settings']" [routerLinkActive]="'active-link'" (click)="sidebarService.isOpened = false">
+    {{ 'PROFILE.SETTINGS.SETTINGS' | translate}}</a>
+  <a [routerLink]="['profile/bonuses']" [routerLinkActive]="'active-link'" (click)="sidebarService.isOpened = false">
+    {{ 'PROFILE.BONUSES.BONUSES' | translate}}</a>
+  <a [routerLink]="['/auth/sign-in']" (click)="logout(); sidebarService.isOpened = false"
+    [routerLinkActive]="'active-link'">
+    {{ 'PROFILE.SETTINGS.OUT' | translate }}</a>
+</app-sidebar>
+<div class="router-wrapper" [@routeAnimation]="getAnimationData(routerOutlet)">
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+<app-footer>
+  <a [routerLink]="['/contacts']">{{ 'COMMON.FOOTER.CONTACTS' | translate }}</a>
+  <a [routerLink]="['/rules']">{{ 'COMMON.FOOTER.RULES' | translate }}</a>
+</app-footer>

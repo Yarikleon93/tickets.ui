@@ -1,0 +1,155 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: black;
+  @include kino-scroll;
+  overflow-x: scroll;
+  scroll-margin-right: 20px;
+  scrollbar-width: thin;
+}
+
+.placeholder {
+  position: relative;
+  width: 85%;
+  margin: auto;
+  text-align: center;
+  font-weight: 500;
+  .text {
+    user-select: none;
+    opacity: 0.7;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  img {
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-top: 102px;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 82px;
+  margin: 0 auto;
+}
+
+.grid {
+  width: min-content;
+  display: grid;
+  gap: 5px;
+  animation-name: hallAppearance;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+}
+
+.not-allowed {
+  cursor: not-allowed;
+  .seat {
+    pointer-events: none;
+    input:checked ~ label {
+      &::after {
+        content: '';
+      }
+    }
+  }
+}
+
+.seat label,
+.row-number {
+  @include full-centr;
+  width: 30px;
+  height: 30px;
+  color: #ffffff66;
+  font-size: 12px;
+}
+
+.seat {
+  user-select: none;
+  label {
+    border-radius: 9px;
+    border: 1px solid #8e99af66;
+    .img {
+      display: none;
+    }
+  }
+
+  &:hover {
+    label {
+      border-color: $attention-color;
+      .place {
+        display: none;
+      }
+      .img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+
+  input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  input:checked ~ label {
+    position: relative;
+    border: none;
+    color: transparent;
+    .place {
+      display: none;
+    }
+    &::after {
+      position: absolute;
+      top: 50%;
+      display: block;
+      left: 50%;
+      width: 100%;
+      content: '+';
+      text-align: center;
+      color: #ffffff30;
+      font-size: 28px;
+      transform: translate(-50%, -50%);
+    }
+    &:hover {
+      border-radius: 9px;
+      border: 1px solid $base-color;
+      &::after {
+        color: #ffffff80;
+      }
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes hallAppearance {
+  from {
+    transform: scale(0);
+    filter: blur(50px);
+  }
+}
+
+@media (max-width: $smartphone) {
+  .placeholder {
+    width: 100%;
+  }
+}

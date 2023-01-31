@@ -1,0 +1,30 @@
+@import 'variables';
+@import 'mixins';
+@import 'classes';
+
+:host {
+  @include page-content;
+  @extend .adaptive-page-padding;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  padding-top: 60px;
+}
+
+.readmore-btn {
+  padding: 0 32px;
+  text-align: center;
+  font-size: $fsize-standart;
+  font-weight: 500;
+  background-color: #000;
+
+  &:hover {
+    background-color: #111;
+  }
+}
+
+@media (max-width: $landscape) {
+  :host {
+    margin: 0;
+  }
+}

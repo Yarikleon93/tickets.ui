@@ -1,0 +1,59 @@
+@import "variables";
+
+:host {
+  animation-name: appearance;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  margin: auto;
+}
+
+.loader {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 64px;
+  width: 64px;
+  border: 8px solid $base-color;
+  box-sizing: content-box;
+  border-bottom: none;
+  border-right: none;
+  border-radius: 999px;
+  animation-name: loader;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  &::before {
+    display: block;
+    content: "";
+    width: 52px;
+    height: 52px;
+    border-top: 6px solid white;
+    box-sizing: content-box;
+    border-radius: 999px;
+    animation-name: loader;
+    animation-duration: 1.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes appearance {
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,28 @@
+<img src="assets/images/ui-icons/ticket.svg" alt="">
+<div class="poster-wrapper">
+  <img class="poster" [src]="imageService.getPath(ticket.session.movie.posterUrl)" alt="">
+</div>
+<div class="content">
+  <div class="description">
+    <div class="movie-info">
+      <span class="name">{{ticket.session.movie.name}}</span>
+      <span class="duration">{{ticket.session.movie.duration}} {{ 'MOVIE_DETAIL.MIN' | translate }}</span>
+    </div>
+    <div class="session-info">
+      <span class="value">{{ ticket.seat.status }}</span>
+      <span class="price">{{ticket.price}} {{'MOVIE_DETAIL.CURRENCY' | translate}}</span>
+      <span class="date">{{ ticket.session.date | localizedDate:'HH:mm' }}<span>
+          {{ ticket.session.date | localizedDate:"EEEE" }}</span></span>
+      <span class="place">
+        <span class="row">{{ticket.seat.row}}</span>
+        {{'HALLSCHEMA.ROW' | translate }}
+        <span class="col">{{ticket.seat.place}}</span>
+        {{ 'HALLSCHEMA.COL' | translate}}
+      </span>
+    </div>
+  </div>
+  <div class="code-wrapper">
+    <img class="dashed" src="assets/images/ui-icons/dashed.svg" alt="">
+    <img class="code" src="assets/images/code.jpg" alt="">
+  </div>
+</div>

@@ -1,0 +1,73 @@
+{
+  "npmScope": "app",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "app": {
+      "tags": [],
+      "implicitDependencies": ["ui-styles"]
+    },
+    "app-e2e": {
+      "tags": []
+    },
+    "admin": {
+      "tags": [],
+      "implicitDependencies": ["ui-styles"]
+    },
+    "admin-e2e": {
+      "tags": [],
+      "implicitDependencies": ["admin"]
+    },
+    "ui-elements": {
+      "tags": []
+    },
+    "ui-styles": {
+      "tags": []
+    },
+    "utils": {
+      "tags": []
+    },
+    "form-manager": {
+      "tags": []
+    },
+    "sign-in": {
+      "tags": []
+    },
+    "models": {
+      "tags": []
+    },
+    "environment": {
+      "tags": []
+    },
+    "ui-components-header": {
+      "tags": []
+    },
+    "ui-components-footer": {
+      "tags": []
+    },
+    "news": {
+      "tags": []
+    },
+    "movie": {
+      "tags": []
+    },
+    "common": {
+      "tags": []
+    },
+    "hall": {
+      "tags": []
+    },
+    "bonuse": {
+      "tags": []
+    }
+  }
+}

@@ -1,0 +1,120 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  display: flex;
+  width: min-content;
+  overflow-x: auto;
+  @include kino-scroll;
+  scrollbar-width: thin;
+}
+
+.wrapper {
+  @include flex-col;
+  align-items: center;
+  > img {
+    margin: 0 auto;
+    height: 82px;
+    min-width: 100%;
+  }
+}
+
+.schema {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0 20px;
+  .seats-container {
+    display: grid;
+    gap: 5px;
+    width: max-content;
+  }
+
+  .rows-names {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    height: 100%;
+    margin-right: 10px;
+
+    > * {
+      width: 30px;
+      height: 30px;
+      @include full-centr;
+      font-size: 12px;
+      color: #8e99af;
+    }
+  }
+
+  .seat {
+    label {
+      @include full-centr;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      border: 1px solid #8e99af66;
+      color: #ffffff66;
+      font-size: 12px;
+      user-select: none;
+      transition: 0.1s;
+      animation-name: appearance-seat;
+      animation-duration: 0.2s;
+      animation-timing-function: ease-in-out;
+    }
+
+    input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+
+    input:checked ~ label {
+      background-color: $base-color;
+      color: #333;
+    }
+
+    input:disabled ~ label {
+      background-color: rgba(241, 241, 241, 0.1);
+    }
+  }
+}
+
+.tips-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: max-content;
+  margin: 0 auto 40px;
+  > div {
+    margin: 10px 15px;
+    font-size: 12px;
+    text-align: center;
+    color: #8e99af;
+    &::before {
+      display: block;
+      content: ' ';
+      width: 15px;
+      height: 15px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      border: 1px solid #8e99af;
+      border-radius: 99px;
+    }
+
+    &:nth-child(2)::before {
+      background-color: rgba(241, 241, 241, 0.1);
+    }
+
+    &:nth-child(3)::before {
+      border-color: $base-color;
+      background-color: $base-color;
+    }
+  }
+}
+
+@keyframes appearance-seat {
+  from {
+    opacity: 0.25;
+    transform: scaleY(0);
+  }
+}

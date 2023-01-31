@@ -1,0 +1,4 @@
+<a [routerLink]="['tickets']" [routerLinkActive]="'active-link'">{{ 'PROFILE.SETTINGS.TICKETS' | translate }}</a>
+<a [routerLink]="['settings']" [routerLinkActive]="'active-link'">{{ 'PROFILE.SETTINGS.SETTINGS' | translate }}</a>
+<a [routerLink]="['bonuses']" [routerLinkActive]="'active-link'">{{ 'PROFILE.BONUSES.BONUSES' | translate }}</a>
+<a [routerLink]="['/auth/sign-in']" (click)="out()" [routerLinkActive]="'active-link'">{{ 'PROFILE.SETTINGS.OUT' | translate }}</a>

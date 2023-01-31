@@ -1,0 +1,6 @@
+<h3>
+  <ng-content></ng-content>
+</h3>
+<div class="wrapper" [class.archive]="isArchive">
+  <app-ticket-card *ngFor="let ticket of tickets" [ticket]="ticket"></app-ticket-card>
+</div>

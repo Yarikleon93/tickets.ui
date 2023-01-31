@@ -1,0 +1,50 @@
+<form class="form" [formGroup]="form" autocomplete="off" (ngSubmit)="onSubmit()">
+  <div class="images-list">
+    <div class="image" *ngFor="let image of images; index as id">
+      <img class="img" [src]="getSource(image)" />
+      <button *ngIf="!(id === 0 && images.length === 1)" type="button" class="kino-round-btn btn-remove"
+        (mousedown)="removeOnMouseDown(id)" (mouseup)="removeOnMouseUp()">
+        <img src="assets/images/ui-icons/icons-delete.svg" alt="">
+      </button>
+    </div>
+    <div class="image" *ngIf="!images?.length">
+      <img class="alternative-img" src="assets/images/placeholder_460x280.svg" />
+    </div>
+    <div class="button-wrapper">
+      <label class="kino-btn upload-btn">
+        <span>{{ "COMMON.BUTTONS.UPLOAD_IMAGE" | translate }}</span>
+        <input #imgInput type="file" accept="image/*" multiple="true" (change)="uploadImages(imgInput.files)" />
+      </label>
+    </div>
+  </div>
+
+  <div class="data">
+    <app-input [placeholder]="'ADMIN.NEWS.EDITOR.PLACEHOLDERS.TITLE' | translate" formControlName="title"
+      [error]="formManager.hasError('title', 'required') || formManager.hasError('title', 'maxlength')">
+      {{ 'ADMIN.NEWS.EDITOR.TITLE' | translate }}
+    </app-input>
+    <app-input [placeholder]="'ADMIN.NEWS.EDITOR.PLACEHOLDERS.SUBTITLE' | translate" formControlName="subtitle"
+      [error]="formManager.hasError('subtitle', 'required') || formManager.hasError('subtitle', 'maxlength')">
+      {{ 'ADMIN.NEWS.EDITOR.SUBTITLE' | translate }}
+    </app-input>
+    <div class="textarea-wrapper">
+      <span class="title">
+        {{ 'ADMIN.NEWS.EDITOR.DESCRIPTION' | translate }}
+      </span>
+      <textarea class="description-textarea" cols="15" [class.error]="formManager.hasError('description', 'required')"
+        placeholder="{{ 'ADMIN.NEWS.EDITOR.PLACEHOLDERS.NEWS' | translate }}" formControlName="description">
+    </textarea>
+      <span
+        *ngIf="formManager.hasError('description', 'required') || formManager.hasError('description', 'maxlength')"></span>
+    </div>
+    <div class="button-container">
+      <button class="kino-btn-primary add-btn" type="submit" [disabled]="!(form.valid && images.length)">
+        <span *ngIf="!news">{{ 'ADMIN.NEWS.ADD_NEWS' | translate }}</span>
+        <span *ngIf="news">{{ 'COMMON.BUTTONS.SAVE' | translate }}</span>
+      </button>
+      <button class="kino-btn cancel-btn" type="reset" routerLink="..">
+        {{ 'COMMON.BUTTONS.CANCEL' | translate }}
+      </button>
+    </div>
+  </div>
+</form>

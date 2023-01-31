@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="info">
+      <div>{{'ADMIN.BONUSE.NAME_OF_PRODUCT' | translate}}</div>
+      <div>{{bonuse.name}}</div>
+      <div>{{'ADMIN.BONUSE.NUMBER_OF_POINTS' | translate}}</div>
+      <div>{{bonuse.total}}</div>
+  </div>
+  <img [src]="imageService.getPath(bonuse.image)" alt="">
+</div>
+<div class="controlls">
+  <button class="kino-round-btn" (click)="removeModal.emit(bonuse.id)">
+    <img src="assets/images/ui-icons/icons-delete.svg" />
+  </button>
+  <button class="kino-round-btn" (click)="onEditButtonClick(bonuse.id)">
+    <img src="assets/images/ui-icons/icons-edit.svg" />
+  </button>
+</div>

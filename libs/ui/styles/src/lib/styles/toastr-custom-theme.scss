@@ -1,0 +1,27 @@
+@import "variables.scss";
+
+.ngx-toastr {
+    opacity: 0.95 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.toast-container .toast-success {
+    background-color: $base-color;
+    .toast-title {
+        color: black;
+    }
+
+    .toast-message {
+        color: black;
+    }
+}
+
+.toast-container .toast-error {
+    background-color: $attention-color;
+}
+
+.toast-title {
+    font-weight: 500 !important;
+    font-size: 18px;
+}

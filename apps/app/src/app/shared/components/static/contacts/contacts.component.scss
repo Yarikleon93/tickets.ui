@@ -1,0 +1,149 @@
+@import 'variables';
+@import 'mixins';
+@import 'classes';
+
+:host {
+  @include page-content;
+  @include flex-col;
+}
+
+.content-wrapper {
+  @extend .adaptive-page-padding;
+  p {
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.75;
+  }
+}
+
+hr {
+  color: $base-color;
+  margin: 30px 0;
+}
+
+.chat-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: -30px;
+  .placeholder {
+    margin-right: 60px;
+  }
+  .placeholder,
+  button {
+    margin-top: 30px;
+  }
+  button {
+    display: flex;
+    padding: 0 20px;
+    span {
+      color: black;
+    }
+  }
+}
+
+.contacts-wrapper {
+  display: flex;
+}
+
+.form {
+  @include flex-col;
+  width: 66.66%;
+  padding-right: 10%;
+  .submit-wrapper {
+    margin-top: 30px;
+    input {
+      margin-left: auto;
+      padding: 0 60px;
+    }
+  }
+}
+
+.form-header,
+.phonenumber {
+  display: flex;
+  align-items: center;
+}
+
+.form-header {
+  margin-bottom: 20px;
+}
+
+.info-wrapper {
+  @include flex-col;
+  .info {
+    line-height: 1.75;
+  }
+}
+
+.phonenumber {
+  margin-top: 4px;
+  img {
+    margin-right: 8px;
+  }
+  span {
+    color: $base-color;
+  }
+}
+
+.social-media {
+  margin-top: 40px;
+  .list {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    img {
+      cursor: pointer;
+    }
+  }
+}
+
+.map {
+  height: 417px;
+  width: 100%;
+  background-color: skyblue;
+  margin-bottom: -140px;
+}
+
+@media (max-width: $landscape) {
+  .contacts-wrapper {
+    flex-direction: column;
+    form {
+      width: 100%;
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      padding-right: 0;
+      border-bottom: 2px solid $base-color;
+    }
+  }
+}
+
+@media (max-width: $smartphone) {
+  .contacts-wrapper {
+    form {
+      .submit-wrapper {
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $small-screen) {
+  .map {
+    margin-bottom: -120px;
+  }
+}
+
+@media (max-width: $desktop) {
+  .map {
+    margin-bottom: -60px;
+  }
+}
+
+@media (max-width: $ipad) {
+  .map {
+    margin-bottom: -40px;
+  }
+}

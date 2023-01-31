@@ -1,0 +1,26 @@
+@import "variables";
+
+.header,
+.sub-header,
+.description {
+  margin-top: 0;
+}
+
+.header {
+  margin-bottom: 20px;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -1.03px;
+}
+.sub-header {
+  font-size: 20px;
+  font-weight: 800;
+}
+.description {
+  font-size: $fsize-standart;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.75;
+  margin-bottom: 43px;
+  white-space: pre-line;
+}

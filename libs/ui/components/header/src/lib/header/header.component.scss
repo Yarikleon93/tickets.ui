@@ -1,0 +1,55 @@
+@import 'variables';
+@import 'mixins';
+@import 'classes';
+
+:host {
+  display: contents;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: $header-height;
+  padding: inherit;
+  background-color: #000000;
+  z-index: 10;
+  .logo {
+    height: 44px;
+    object-fit: contain;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+  }
+  nav {
+    @include full-flex-centr;
+    height: 32px;
+    img {
+      height: 32px;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: $ipad) {
+  header {
+    img {
+      height: 32px;
+    }
+  }
+}
+
+@media (max-width: $firstgen) {
+  header {
+    img {
+      position: absolute;
+      opacity: 0.1;
+    }
+    nav {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}

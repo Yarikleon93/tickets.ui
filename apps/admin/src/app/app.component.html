@@ -1,0 +1,9 @@
+<app-header>
+  <a class="logout-desk" (click)="logout()" [routerLink]="['/auth']">
+    {{ 'COMMON.HEADER.OUT' | translate }}</a>
+  <app-burger-menu class="menu-mob"></app-burger-menu>
+</app-header>
+<div class="router-wrapper" [@routeAnimation]="getAnimationData(routerOutlet)">
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+<app-footer></app-footer>

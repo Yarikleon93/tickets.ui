@@ -1,0 +1,7 @@
+@import 'variables';
+@import 'mixins';
+@import '../../../../../../../../libs/hall/src/lib/components/hall-schema/hall-schema.styles.scss';
+
+:host {
+  max-width: 90vw;
+}

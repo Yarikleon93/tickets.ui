@@ -1,0 +1,50 @@
+<section class="content-wrapper">
+  <h2>{{ 'CONTACTS.TITLE' | translate }}</h2>
+  <p>{{ 'CONTACTS.DESCRIPTION' | translate }}</p>
+  <hr>
+  <div class="chat-wrapper">
+    <span class="placeholder">{{ 'CONTACTS.PLACEHOLDER' | translate }}:</span>
+    <button class="kino-btn-primary">
+      <img src="assets/images/ui-icons/icons-chat.svg" alt="">
+      <span>
+        {{ 'CONTACTS.QUESTIONS' | translate }}
+      </span>
+    </button>
+  </div>
+  <hr>
+  <section class="contacts-wrapper">
+    <form class="form">
+      <span class="form-header">
+        <img src="assets/images/ui-icons/icons-email.svg" alt="">
+        <span>{{ 'CONTACTS.WRITE_US' | translate }}:</span>
+      </span>
+      <input type="text">
+      <textarea name="" id="" cols="30" rows="10"></textarea>
+      <div class="submit-wrapper">
+        <input type="submit" class="kino-btn-primary" [value]="'COMMON.BUTTONS.SEND' | translate">
+      </div>
+    </form>
+    <div class="info-wrapper">
+      <span class="info">
+        {{ "CONTACTS.SCHEDULE.INFO" | translate }}<br>
+        {{ "CONTACTS.SCHEDULE.ADDITION" | translate }}
+      </span>
+      <a href="tel:+0800300600" class="phonenumber">
+        <img src="assets/images/ui-icons/icons-phone.svg" alt="">
+        <span>0 800 300 600</span>
+      </a>
+      <div class="social-media">
+        <span>{{ "CONTACTS.OUR_SOCIAL" | translate }}:</span>
+        <div class="list">
+          <img src="assets/images/ui-icons/icons-instagram.svg" alt="">
+          <img src="assets/images/ui-icons/icons-facebook.svg" alt="">
+          <img src="assets/images/ui-icons/icons-twitter.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+  <h2>{{ "CONTACTS.OUR_LOCATION" | translate }}</h2>
+</section>
+<div class="map">
+
+</div>

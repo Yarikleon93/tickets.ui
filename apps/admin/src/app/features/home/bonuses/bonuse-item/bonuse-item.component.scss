@@ -1,0 +1,82 @@
+@import "mixins";
+@import "variables";
+
+:host {
+  display: flex;
+}
+.wrapper {
+  width: 100%;
+  @include flex-col;
+  .info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(min-content, 1fr));
+      div {
+        min-width: min-content;
+        margin: auto 0;
+        margin-right: 20px;
+        padding-bottom: 20px;
+        &:nth-child(odd) {
+          color: $text-color-secondary;
+        }
+      }
+  }
+  img {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 14px;
+  }
+}
+.controlls {
+  display: flex;
+  .kino-round-btn{
+    margin-left: 20px;
+  }
+}
+.remove-modal-content {
+  width: 33vw;
+  height: 100%;
+  h3 {
+    margin: 0;
+  }
+  p {
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.75;
+    color: #b1b1b1;
+  }
+
+  .modal-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+    button {
+      margin-top: 20px;
+      padding: 0 40px;
+    }
+    .add-btn {
+      margin-left: 20px;
+    }
+  }
+}
+@media (max-width: $portrait) {
+  .wrapper {
+    width: min-content;
+    width: auto;
+    .info {
+      grid-template-columns: 1fr;
+      div {
+        margin: 0;
+      }
+    }
+  }
+}
+@media (max-width: $lowgen) {
+  :host {
+    flex-direction: column;
+    .controlls {
+      margin-bottom: 20px;
+    }
+  }
+}

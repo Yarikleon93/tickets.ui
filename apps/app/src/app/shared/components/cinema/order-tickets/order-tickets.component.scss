@@ -1,0 +1,118 @@
+@import 'variables';
+@import 'mixins';
+
+@mixin anim-appearance {
+  animation-name: appearance;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.3s;
+  overflow: hidden;
+}
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 60px;
+}
+
+.mark {
+  width: 415px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.tickets-list {
+  width: 415px;
+  margin-left: 25px;
+  button {
+    margin-top: 20px;
+    width: 58%;
+    @include anim-appearance;
+  }
+  .ticket {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 4px;
+    border: solid 1px #ffffff;
+    margin-bottom: 20px;
+    .wrapper {
+      padding: 20px 30px 0 20px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .value {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0 10px 20px;
+      .type {
+        font-size: 16px;
+        color: #4ecb18;
+        width: 100px;
+        margin-right: 80px;
+      }
+    }
+    .date,
+    .seat {
+      display: flex;
+      justify-content: space-between;
+      font-size: $fsize-standart;
+    }
+    .date {
+      margin-right: 0.5em;
+      span:nth-child(2) {
+        color: $base-color;
+        margin-left: 0.2em;
+      }
+    }
+    .seat {
+      .row {
+        display: flex;
+        align-items: center;
+        span:nth-child(1) {
+          color: $base-color;
+          margin-right: 0.5em;
+        }
+      }
+      .col {
+        display: flex;
+        align-items: center;
+        div {
+          @include full-centr;
+          background-color: $base-color;
+          color: #333;
+          width: 30px;
+          height: 30px;
+          border-radius: 8px;
+          margin: 0 5px 0 18px;
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+    }
+    @include anim-appearance;
+  }
+}
+
+@media (max-width: $ipad) {
+  :host {
+    justify-content: center;
+  }
+}
+
+@keyframes appearance {
+  from {
+    // max-height: 0px;
+    opacity: 0;
+    transform: translateY(-25%);
+  }
+  50% {
+    opacity: 0.25;
+  }
+  to {
+    // max-height: 100%;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

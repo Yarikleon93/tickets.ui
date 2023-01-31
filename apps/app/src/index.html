@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>KinO</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <style type="text/css">
+    body {
+      margin: 0;
+      background-color: #111111;
+    }
+    .app-loader-wrapper {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app-loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 20vmin;
+      width: 20vmin;
+      border: 2vmin solid #f5c518;
+      box-sizing: content-box;
+      border-bottom: none;
+      border-right: none;
+      border-radius: 999px;
+      animation-name: loader;
+      animation-duration: 1.5s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+
+    .app-loader::before {
+      display: block;
+      content: "";
+      width: 18vmin;
+      height: 18vmin;
+      border-top: 1vmin solid white;
+      box-sizing: content-box;
+      border-radius: 999px;
+      animation-name: loader;
+      animation-duration: 0.8s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes loader {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-loader-wrapper" id="loader">
+    <div class="app-loader">
+    </div>
+  </div>
+  <app-root></app-root>
+</body>
+</html>

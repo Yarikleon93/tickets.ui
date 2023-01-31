@@ -1,0 +1,24 @@
+@import "variables";
+@import "auth-common";
+
+.terms {
+    display: flex;
+    width: 100%;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    app-checkbox {
+        margin-right: 0.5em;
+    }
+    label {
+        font-size: $fsize-standart;
+        font-weight: 300;
+        margin-top: 0.3em;
+        line-height: 1.75;
+        width: 80%;
+        user-select: none;
+    }
+}
+
+.passwords-block {
+    width: 100%;
+}

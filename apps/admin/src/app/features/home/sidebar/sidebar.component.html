@@ -1,0 +1,17 @@
+<nav>
+  <div class="group">
+    <a [routerLink]="['movies']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.MOVIES' | translate }}</a>
+    <a [routerLink]="['cinema']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.HALLS' | translate }}</a>
+    <a [routerLink]="['tickets']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.TICKETS' | translate }}</a>
+    <a [routerLink]="['landingpage']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.LANDINGPAGE_SETTINGS' |
+      translate }}</a>
+    <a [routerLink]="['bonuses']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.BONUSES' | translate }}</a>
+  </div>
+
+  <div class="group group-stretched">
+    <a [routerLink]="['news']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.NEWS' | translate }}</a>
+    <a [routerLink]="['contacts']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.CONTACTS' | translate
+      }}</a>
+    <a [routerLink]="['rules']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.RULES' | translate }}</a>
+  </div>
+</nav>

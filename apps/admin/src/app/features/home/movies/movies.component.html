@@ -1,0 +1,35 @@
+<nav class="navigation-desk">
+  <div class="links">
+    <a [routerLink]="['/']" [queryParams]="{status: movieStatus.IN_RENT}"
+      [routerLinkActive]="'active-link'">{{'ADMIN.MOVIE.IN_ORDER' | translate}}</a>
+    <a [routerLink]="['/']" [queryParams]="{status: movieStatus.IN_PRE_ORDER}"
+      [routerLinkActive]="'active-link'">{{'ADMIN.MOVIE.IN_PREORDER' | translate}}</a>
+    <a [routerLink]="['/']" [queryParams]="{status: movieStatus.IN_SOON}"
+      [routerLinkActive]="'active-link'">{{'ADMIN.MOVIE.IN_SOON' | translate}}</a>
+    <a [routerLink]="['/']" [queryParams]="{status: movieStatus.IN_ARHIVE}" [routerLinkActive]="'active-link'">
+      <img src="assets/images/ui-icons/delete.svg" alt="">{{'ADMIN.MOVIE.ARHIVE' | translate}}</a>
+  </div>
+  <button class="kino-btn-add kino-btn-primary" [routerLink]="['/movies/editor/']">{{'ADMIN.MOVIE.ADD_FILM' |
+    translate}}</button>
+</nav>
+
+<nav class="navigation-mob">
+  <select class="navigation-list" [routerLink]="['/']" [(ngModel)]="selectValue" [queryParams]="{status: selectValue}">
+    <option value={{movieStatus.IN_RENT}}>
+      &#160;{{'ADMIN.MOVIE.IN_ORDER' | translate}}
+    </option>
+    <option value={{movieStatus.IN_PRE_ORDER}}>
+      {{'ADMIN.MOVIE.IN_PREORDER' | translate}}
+    </option>
+    <option value={{movieStatus.IN_SOON}}>
+      {{'ADMIN.MOVIE.IN_SOON' | translate}}
+    </option>
+    <option value={{movieStatus.IN_ARHIVE}}>
+      {{'ADMIN.MOVIE.ARHIVE' | translate}}
+    </option>
+  </select>
+</nav>
+<div class="container">
+  <admin-poster (remove)="remove($event, i)" class="poster" *ngFor="let movie of movies; index as i;" [movie]="movie">
+  </admin-poster>
+</div>

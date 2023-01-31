@@ -1,0 +1,19 @@
+@import 'mixins';
+@import 'variables';
+@import 'classes';
+
+:host {
+  @include page-content;
+  @include flex-col;
+  @extend .adaptive-page-padding;
+}
+
+pre {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

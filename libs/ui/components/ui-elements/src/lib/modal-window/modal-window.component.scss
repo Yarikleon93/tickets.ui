@@ -1,0 +1,73 @@
+@import 'variables';
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 100%;
+  z-index: 999;
+  padding: 20px;
+  .background {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    opacity: 0.3;
+    z-index: 0;
+    animation-name: appearance;
+    animation-timing-function: ease-out;
+    animation-duration: 0.2s;
+  }
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: min(256px, 75vw);
+  min-height: min(256px, 75vh);
+  padding: 20px 20px 30px 30px;
+  border: solid 3px #919191;
+  box-shadow: 0 0 11px 5px rgba(0, 0, 0, 0.39);
+  background-color: black;
+  z-index: 1;
+  animation-name: modalAppearance;
+  animation-timing-function: ease-out;
+  animation-duration: 0.1s;
+  .content {
+    width: 100%;
+    flex-grow: 1;
+  }
+}
+
+.close-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+  .close-btn {
+    border: none;
+    padding: 0;
+    background: transparent;
+    outline: none;
+    color: white;
+    opacity: 0.3;
+    font-size: 14px;
+  }
+}
+
+@keyframes appearance {
+  from {
+    opacity: 0;
+    filter: blur(500px);
+  }
+}
+
+@keyframes modalAppearance {
+  from {
+    transform: translateY(15%) scale(0.75);
+  }
+}

@@ -1,0 +1,20 @@
+<div class="wrapper" *ngIf="movie">
+  <app-movie-poster class="poster" [movie]="movie" [routerLink]="['/movies/' + movie.id]"></app-movie-poster>
+  <div class="info">
+    <span class="movie-name" [routerLink]="['/movies/' + movie.id]">{{movie.name}}</span>
+    <span>{{ 'MOVIE_DETAIL.TYPES.' + movie.type | translate }}</span>
+    <span>{{ movie.duration }} {{ 'MOVIE_DETAIL.MIN' | translate }}</span>
+  </div>
+  <div class="schedule-list">
+    <span *ngIf="!movie.sessions.length">{{ 'MOVIE_DETAIL.NON_SESSION' | translate }}</span>
+    <label class="time-radio" *ngFor="let session of movie.sessions; index as i" (click)="selectSession(session)">
+      <input type="radio" [name]="'time_' + movie.id">
+      <div class="decorator">
+        {{ session.date | localizedDate:'HH:mm' }}
+      </div>
+    </label>
+    <label class="close-room" (click)="selectSession(null)" *ngIf="selectedSession">
+      <input type="radio" [name]="'time_' + movie.id">
+    </label>
+  </div>
+</div>

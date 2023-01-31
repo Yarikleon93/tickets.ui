@@ -1,0 +1,48 @@
+<h2>{{ 'AUTH.REGISTRATION' | translate }}</h2>
+<form [formGroup]="form" autocomplete="off" (ngSubmit)="onSubmit()">
+  <app-input [id]="'email'" [type]="'email'" [placeholder]="'AUTH.EMAIL_PLACEHOLDER' | translate"
+    [src]="'assets/images/ui-icons/email.svg'" [error]="formManager.hasError('email', 'pattern')"
+    formControlName="email">
+    {{ 'AUTH.EMAIL' | translate}}
+  </app-input>
+  <label class="error"
+    *ngIf="formManager.hasError('email', 'pattern')">{{ 'AUTH.INVALID_EMAIL' | translate }} </label>
+
+  <div formGroupName="passwords" class="passwords-block">
+    <app-input [id]="'password'" [type]="'password'" [placeholder]="'xxxxxxxxxxxxx'"
+      [src]="'assets/images/ui-icons/lock.svg'" [error]="formManager.hasError('passwords.password', 'required') ||
+      formManager.hasError('passwords.password', 'minlength') ||
+      formManager.hasError('passwords.password', 'pattern')" formControlName="password">
+      {{ 'AUTH.PASSWORD' | translate}}
+    </app-input>
+    <label class="error"
+      *ngIf="formManager.hasError('passwords.password', 'required')">{{ 'AUTH.FIELD_REQUIRED' | translate }} </label>
+    <label class="error"
+      *ngIf="formManager.hasError('passwords.password', 'minlength')">{{ 'AUTH.PASSWORD_LENGTH' | translate }} </label>
+    <label class="error"
+      *ngIf="formManager.hasError('passwords.password', 'pattern')">{{ 'AUTH.REGEXP_MISSMATCH' | translate }}</label>
+
+
+    <app-input [id]="'confirmPassword'" [type]="'password'" [placeholder]="'xxxxxxxxxxxxx'"
+      [src]="'assets/images/ui-icons/lock.svg'" [error]="formManager.hasError('passwords.confirmPassword', 'required') || 
+      formManager.hasError('passwords.confirmPassword', 'minlength') ||
+      formManager.hasError('passwords.confirmPassword', 'mismatch')" formControlName="confirmPassword">
+      {{ 'AUTH.CONFIRM_PASSWORD' | translate}}
+    </app-input>
+    <label class="error"
+      *ngIf="formManager.hasError('passwords.confirmPassword', 'required')">{{ 'AUTH.FIELD_REQUIRED' | translate }} </label>
+    <label class="error"
+      *ngIf="formManager.hasError('passwords.confirmPassword', 'mismatch')">{{ 'AUTH.PASSWORDS_MISSMATCH' | translate }}</label>
+  </div>
+
+  <div class="terms">
+    <app-checkbox [id]="'checkbox-terms'" formControlName="isAccepted"></app-checkbox>
+    <label for="checkbox-terms">
+      {{ 'AUTH.RULES_ACCEPTANCE' | translate }}
+    </label>
+  </div>
+  <button class="kino-btn-primary" type="submit" [disabled]="!form.valid">
+    {{ 'AUTH.REGISTER' | translate}}
+  </button>
+</form>
+<a [routerLink]="['/auth/sign-in']">{{ 'AUTH.BACK_TO_LOGIN' | translate }}</a>

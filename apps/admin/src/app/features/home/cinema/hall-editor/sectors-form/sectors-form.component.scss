@@ -1,0 +1,47 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  @include flex-col;
+}
+
+.note {
+  color: $base-color;
+  font-style: italic;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 32px;
+  gap: 20px;
+  margin-bottom: 40px;
+  .name-input {
+    grid-column: 2 span;
+  }
+  button {
+    margin: auto auto 7px;
+  }
+  animation-name: appearance;
+  animation-duration: 0.15s;
+  animation-timing-function: ease-out;
+}
+
+@media (max-width: $smartphone) {
+  form {
+    .to-input {
+      grid-column: 2 span;
+    }
+  }
+}
+
+@keyframes appearance {
+  from {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  50% {
+    opacity: 0.25;
+  }
+}

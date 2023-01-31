@@ -1,0 +1,11 @@
+<form>
+  <h4 class="header">{{ 'COMMON.DESCRIPTION' | translate }}</h4>
+  <textarea rows="25" [(ngModel)]="text" name="text"
+    placeholder="{{ 'ADMIN.RULES.PLACEHOLDER' | translate }}"></textarea>
+  <div class="button-container">
+    <button class="kino-btn cancel" type="button" (click)="reset()" [disabled]="isLoading">{{ 'COMMON.BUTTONS.CANCEL' |
+      translate }}</button>
+    <button class="kino-btn-primary save" type="submit" [class.loading-btn]="isLoading" (click)="submit()">{{
+      'COMMON.BUTTONS.SAVE' | translate }}</button>
+  </div>
+</form>

@@ -1,0 +1,12 @@
+<app-circular-loader *ngIf="!activeTickets && !archiveTickets; else content"></app-circular-loader>
+<ng-template #content>
+  <app-ticket-card-list *ngIf="activeTickets.length" [tickets]="activeTickets">
+    {{ 'PROFILE.TICKET.ACTIVE_TICKETS' | translate}}</app-ticket-card-list>
+  <ng-container *ngIf="archiveTickets.length">
+    <app-ticket-card-list [isArchive]="true" [class.active]=!isShowedAll [tickets]="archiveTickets">{{
+      'PROFILE.TICKET.ARCHIVE_TICKETS' | translate}}</app-ticket-card-list>
+    <button *ngIf="!isShowedAll" type="button" class="kino-btn-primary" (click)="showAll()">{{ 'PROFILE.TICKET.SEE_ALL'
+      | translate}}</button>
+  </ng-container>
+  <app-no-tickets *ngIf="!activeTickets.length && !archiveTickets.length"></app-no-tickets>
+</ng-template>

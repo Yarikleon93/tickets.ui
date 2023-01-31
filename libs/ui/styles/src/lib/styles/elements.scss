@@ -1,0 +1,108 @@
+@import 'variables';
+@import 'mixins';
+
+button {
+  cursor: pointer;
+  &:focus {
+    outline-color: #ffffff10;
+    outline-style: ridge;
+  }
+}
+
+[class*='kino-btn'] {
+  @include full-centr;
+  font-weight: 600;
+  font-size: $fsize-standart;
+  color: $text-color-base;
+  height: 60px;
+  border-radius: 30px;
+  border: solid 1px $text-color-base;
+  background-color: transparent;
+  padding: 0 20px;
+  &:hover {
+    background-color: rgba(241, 241, 241, 0.2);
+  }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  img {
+    margin-right: 1em;
+  }
+}
+
+.kino-btn-primary {
+  border: solid 1px $base-color;
+  background-color: $base-color;
+  color: $bg-color;
+  &:hover {
+    background-color: #fcf4d6;
+  }
+}
+
+[class*='kino-round-btn'] {
+  @include full-centr;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  background-color: #585858;
+  border: none;
+  border-radius: 999px;
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &:hover {
+    filter: brightness(1.1);
+  }
+  &:active {
+    filter: brightness(0.9);
+  }
+}
+
+.kino-round-btn-primary {
+  background-color: $base-color;
+}
+
+.loading-btn {
+  pointer-events: none;
+  display: flex;
+  filter: brightness(0.8);
+  &::after {
+    right: 0;
+    font-size: 16px;
+    width: 1em;
+    margin-right: -1em;
+    content: '.';
+    text-align: left;
+    animation-name: text-loader;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes text-loader {
+  33% {
+    content: '.. ';
+  }
+  66% {
+    content: '...';
+  }
+}
+
+textarea {
+  background-color: $bg-color;
+  font-size: 16px;
+  color: #919191;
+  border-radius: 4px;
+  border: solid 2px #979797;
+  padding: 20px;
+  &:focus {
+    outline: none;
+    border: solid 2px $base-color;
+  }
+  &.error {
+    border: solid 2px $attention-color !important;
+  }
+}

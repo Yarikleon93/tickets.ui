@@ -1,0 +1,16 @@
+<h2>{{'HOMEPAGE.TITLES.BREAKING_NEWS' | translate}}</h2>
+<app-circular-loader *ngIf="!news; else content"></app-circular-loader>
+<ng-template #content>
+  <div class="container">
+    <ng-container *ngFor="let item of news; index as i">
+      <div class="news-block" *ngIf="i === slider.currentSlide || (i-1) === (slider.currentSlide)" @sliderAnimation>
+        <img [src]="imageService.getPath(item?.images[0].url)" alt="" [routerLink]="['/news/' + item.id]">
+        <div class="description">
+          <h2>{{item?.title}}</h2>
+          <p>{{item?.subtitle}}</p>
+          <div class="arrow" [routerLink]="['/news/' + item.id]"></div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-template>

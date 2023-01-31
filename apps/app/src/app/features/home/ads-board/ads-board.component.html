@@ -1,0 +1,15 @@
+<h2>
+  <ng-content></ng-content>
+</h2>
+<app-circular-loader *ngIf="!movies; else content"></app-circular-loader>
+<ng-template #content>
+  <div class="container" *ngIf="movies.length; else placeholder">
+    <app-movie-poster [movie]="movie" *ngFor="let movie of movies" [routerLink]="['/movies/' + movie.id]">
+    </app-movie-poster>
+  </div>
+  <ng-template #placeholder>
+    <span>
+      {{ "HOMEPAGE.MOVIES_NOTFOUND" | translate }}
+    </span>
+  </ng-template>
+</ng-template>

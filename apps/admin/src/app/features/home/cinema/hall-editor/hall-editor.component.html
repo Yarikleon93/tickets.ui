@@ -1,0 +1,33 @@
+<div class="controlls">
+  <admin-structure-form class="form" *ngIf="step === STEP.START">
+  </admin-structure-form>
+  <admin-sectors-form class="form" *ngIf="step === STEP.SECTOR_SETUP">
+  </admin-sectors-form>
+  <div class="nav">
+    <ng-template [ngIf]="hallConstructorService.hasInfo()"
+      [ngIfElse]="toBack">
+      <button class="kino-btn" (click)="undo()">{{ 'ADMIN.CINEMA.UNDO' | translate }}</button>
+      <button class="kino-btn-primary" (click)="nextStep()">
+        <span *ngIf="step === STEP.SECTOR_SETUP; else nextStepBtn">
+          {{ 'ADMIN.CINEMA.ADD_HALL' | translate }}
+        </span>
+        <ng-template #nextStepBtn>
+          <span>
+            {{ 'ADMIN.CINEMA.NEXT_STEP' | translate }}
+          </span>
+        </ng-template>
+      </button>
+    </ng-template>
+    <ng-template #toBack>
+      <a [routerLink]="['/cinema']" class="back-btn">
+        <button class="kino-btn">
+          {{ 'COMMON.BUTTONS.BACK' | translate }}
+        </button>
+      </a>
+    </ng-template>
+  </div>
+</div>
+<admin-hallschema-editor [isMutable]="step < STEP.SECTOR_SETUP" [rowsAmount]="hallConstructorService.hallInfo?.rows"
+  [colsAmount]="hallConstructorService.hallInfo?.cols" (hallChange)="hallConstructorService.seats = $event"
+  class="editor">
+</admin-hallschema-editor>

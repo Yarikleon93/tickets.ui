@@ -1,0 +1,30 @@
+<form [formGroup]="form" autocomplete="off" (ngSubmit)="onSubmit()">
+  <app-input [id]="'fullName'" [type]="'text'" [placeholder]="'PROFILE.SETTINGS.FULL_NAME_PLACEHOLDER' | translate"
+    [src]="'assets/images/ui-icons/avatar.svg'" formControlName="fullName"
+    [error]="formManager.hasError('fullName', 'pattern')">
+    {{ 'PROFILE.SETTINGS.FULL_NAME' | translate}}
+  </app-input>
+  <label class="error"
+    *ngIf="formManager.hasError('fullName', 'pattern')">{{ 'PROFILE.SETTINGS.INVALID_FULLNAME' | translate }}</label>
+
+  <app-input [id]="'email'" [type]="'email'" [placeholder]="'AUTH.EMAIL_PLACEHOLDER' | translate"
+    [src]="'assets/images/ui-icons/email.svg'" formControlName="email"
+    [error]="formManager.hasError('email', 'pattern')">
+    {{ 'AUTH.EMAIL' | translate}}
+  </app-input>
+  <label class="error" *ngIf="formManager.hasError('email', 'pattern')">{{ 'AUTH.INVALID_EMAIL' | translate }}</label>
+
+  <app-input [id]="'birthday'" [type]="isOnHoverBirthday ? 'date' : 'text'" (mouseenter)="isOnHoverBirthday = true" (mouseleave)="isOnHoverBirthday = false" [placeholder]="'PROFILE.SETTINGS.BIRTHDAY' | translate"
+    [src]="'assets/images/ui-icons/calendar.svg'" [error]="formManager.hasError('birthday', 'forbiddenName')"
+    formControlName="birthday">
+    {{ 'PROFILE.SETTINGS.BIRTHDAY' | translate}}
+  </app-input>
+  <label class="error"
+    *ngIf="formManager.hasError('birthday', 'forbiddenName')">{{ 'PROFILE.SETTINGS.INVALID_BIRTHDAY' | translate }}</label>
+
+  <button type="submit" class="kino-btn-primary"
+    [disabled]="(!form.get('email').valid || !form.get('birthday').valid || !form.get('fullName').valid) || !form.touched">
+    {{ 'PROFILE.SETTINGS.SAVE' | translate}}
+  </button>
+</form>
+<img src="assets/images/viewer.svg" alt="">

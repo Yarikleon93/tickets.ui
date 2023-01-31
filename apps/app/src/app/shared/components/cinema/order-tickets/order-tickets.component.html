@@ -1,0 +1,32 @@
+<app-circular-loader *ngIf="!hall; else content"></app-circular-loader>
+<ng-template #content>
+  <app-hall-grid (choiceOfSeats)="selectedSeats = $event" [tickets]="tickets" [hall]="hall"></app-hall-grid>
+  <div class="mark" *ngIf="!selectedSeats?.length">{{'MOVIE_DETAIL.CHOOSE_SEATS' | translate}}</div>
+  <div class="tickets-list" *ngIf="selectedSeats.length">
+    <div class="ticket" *ngFor="let seat of selectedSeats; trackBy:trackBySeat">
+      <div class="wrapper">
+        <div class="date">
+          <span class="time">{{ session.date | localizedDate:'HH:mm' }}</span>
+          <span class="day">{{ session.date | localizedDate:"EEEE" }}</span>
+        </div>
+        <div class="seat">
+          <div class="row">
+            <span>{{seat.row}}</span>
+            <span>{{'HALLSCHEMA.ROW' | translate}}</span>
+          </div>
+          <div class="col">
+            <div>{{seat.place}}</div>
+            <span>{{'HALLSCHEMA.COL' | translate}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="value">
+        <span>{{seat.price}} {{'MOVIE_DETAIL.CURRENCY' | translate}}</span>
+        <span class="type">{{seat.status}}</span>
+      </div>
+    </div>
+    <button class="kino-btn-primary" (click)="onSubmit()">
+      {{'COMMON.BUTTONS.BUY_TICKET' | translate}}
+    </button>
+  </div>
+</ng-template>

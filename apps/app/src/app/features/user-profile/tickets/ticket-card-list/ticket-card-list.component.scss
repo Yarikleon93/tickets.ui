@@ -1,0 +1,24 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  width: 100%;
+  @include flex-col;
+  border-bottom: 1px solid $base-color;
+  padding-bottom: 20px;
+  margin-bottom: 14px;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  > app-ticket-card {
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+.archive {
+  opacity: 0.5;
+}

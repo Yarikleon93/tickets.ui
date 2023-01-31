@@ -1,0 +1,13 @@
+<span>
+  <ng-content></ng-content>
+</span>
+<label [for]="id">
+  <input [id]="id" [type]="type" [placeholder]="placeholder" [(ngModel)]="value" [min]="min" [max]="max"
+    [disabled]="disabled">
+  <img *ngIf="src" [src]="src" alt="">
+  <div class="border" [ngClass]="{'error': error}"></div>
+  <div class="arrows" *ngIf="type === 'number'">
+    <button class="up" type="button" (click)="up()"></button>
+    <button class="down" type="button" (click)="down()"></button>
+  </div>
+</label>

@@ -1,0 +1,43 @@
+@import 'variables';
+
+:host {
+  height: min-content;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1.4px solid $base-color;
+  img {
+    margin-top: 30px;
+  }
+}
+.error {
+  width: 100%;
+  margin-top: 5px;
+  line-height: 1.75;
+  font-weight: 300;
+  font-style: italic;
+  text-align: left;
+  letter-spacing: normal;
+  color: $attention-color;
+}
+app-input {
+  width: 360px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+button {
+  width: 240px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+@media (max-width: $desktop) {
+  :host {
+    justify-content: center;
+    img {
+      display: none;
+    }
+  }
+}

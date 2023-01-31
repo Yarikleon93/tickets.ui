@@ -1,0 +1,35 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": ["es2020", "dom"],
+    "paths": {
+      "@app/ui/components/ui-elements": [
+        "libs/ui/components/ui-elements/src/index.ts"
+      ],
+      "@app/ui/styles": ["libs/ui/styles/src/index.ts"],
+      "@app/utils": ["libs/utils/src/index.ts"],
+      "@app/form-manager": ["libs/form-manager/src/index.ts"],
+      "@app/sign-in": ["libs/sign-in/src/index.ts"],
+      "@app/models": ["libs/models/src/index.ts"],
+      "@app/environment": ["libs/environment/src/index.ts"],
+      "@app/ui/components/header": ["libs/ui/components/header/src/index.ts"],
+      "@app/ui/components/footer": ["libs/ui/components/footer/src/index.ts"],
+      "@app/news": ["libs/news/src/index.ts"],
+      "@app/movie": ["libs/movie/src/index.ts"],
+      "@app/common": ["libs/common/src/index.ts"],
+      "@app/hall": ["libs/hall/src/index.ts"],
+      "@app/bonuse": ["libs/bonuse/src/index.ts"]
+    },
+    "rootDir": "."
+  }
+}

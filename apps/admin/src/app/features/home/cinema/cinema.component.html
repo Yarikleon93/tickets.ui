@@ -1,0 +1,41 @@
+<div class="hall-list">
+  <div class="container-wrapper">
+    <div class="container">
+      <a class="hall-name" *ngFor="let hall of hallEditorService.halls" [routerLink]="['/cinema']"
+        [queryParams]="{selectedHallId: hall.id}" [routerLinkActive]="'active-link'">
+        <span>
+          {{ 'ADMIN.CINEMA.HALL' | translate }}&nbsp;-&nbsp;
+        </span>
+        <span>
+          {{hall.name}}
+        </span>
+      </a>
+    </div>
+  </div>
+  <button (click)="hallEditorService.selectedHall = null" class="kino-btn-primary" [routerLink]="['editor']">{{
+    'ADMIN.CINEMA.ADD_HALL' | translate }}</button>
+</div>
+<div class="schema-wrapper" *ngIf="hallEditorService.selectedHall">
+  <div class="schema-container">
+    <div class="edit-btn-container">
+      <a [routerLink]="['/cinema/editor']" class="edit-btn">
+        <button class="kino-round-btn">
+          <img src="assets/images/ui-icons/icons-edit.svg" alt="">
+        </button>
+      </a>
+    </div>
+    <app-hall-schema class="schema" [hall]="hallEditorService.selectedHall"></app-hall-schema>
+  </div>
+</div>
+<div class="session-section">
+  <div class="session-list">
+    <div class="movie" *ngFor="let i of [0,0,0,0]">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, tenetur possimus. Nostrum modi fugiat
+      exercitationem totam corrupti ipsam quas, ducimus quo tempora id hic facere repudiandae mollitia doloribus aliquid
+      consectetur!
+    </div>
+  </div>
+  <div class="calendar-wrapper">
+    Calendar
+  </div>
+</div>

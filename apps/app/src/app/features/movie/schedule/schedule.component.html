@@ -1,0 +1,17 @@
+<app-circular-loader *ngIf="!sessions; else content"></app-circular-loader>
+<ng-template #content>
+  <app-date-picker [sessions]="sessions" [amountDays]='7' (daySelect)="onScheduleDay($event)" [startDay]="0">
+  </app-date-picker>
+  <app-circular-loader *ngIf="!movies; else schedule"></app-circular-loader>
+  <ng-template #schedule>
+    <h2 class="schedule-title">{{ 'MOVIE_DETAIL.SCHEDULE_OF_MOVIES' | translate }}
+      {{ 'MOVIE_DETAIL.CITY.KIYV' | translate}}</h2>
+    <div class="not-found" *ngIf="!movies?.length">
+      <h2>{{ 'SCHEDULE.SCHEDULE_NOT_FOUND' | translate }}</h2>
+    </div>
+    <ng-container *ngFor="let movie of movies; index as i">
+      <app-session-picker [movie]="movie" (sessionSelect)="selectedSessions[i] = $event"></app-session-picker>
+      <app-order-tickets *ngIf="selectedSessions[i]" [session]="selectedSessions[i]"></app-order-tickets>
+    </ng-container>
+  </ng-template>
+</ng-template>

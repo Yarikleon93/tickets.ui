@@ -1,0 +1,24 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  @include full-flex-centr;
+  flex-direction: column;
+  width: 100%;
+}
+button {
+  width: 229px;
+  height: 60px;
+  margin-top: 10px;
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  font-size: $fsize-standart;
+  font-weight: 500;
+}
+button:hover {
+  background-color: grey;
+}
+.active {
+  border-bottom: none;
+}

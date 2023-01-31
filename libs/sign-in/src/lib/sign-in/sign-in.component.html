@@ -1,0 +1,25 @@
+<h2>{{ 'AUTH.LOGIN' | translate }}</h2>
+<form [formGroup]="form" autocomplete="off" (ngSubmit)="onSubmit()">
+  <app-input [id]="'email'" [type]="'email'" [placeholder]="'AUTH.EMAIL_PLACEHOLDER' | translate"
+    [error]="formManager.hasError('email', 'pattern')" [src]="'assets/images/ui-icons/email.svg'"
+    formControlName="email">
+    {{ 'AUTH.EMAIL' | translate}}
+  </app-input>
+  <label class="error"
+    *ngIf="formManager.hasError('email', 'pattern')">{{ 'AUTH.INVALID_EMAIL' | translate }}</label>
+
+  <app-input [id]="'password'" [type]="'password'" [placeholder]="'xxxxxxxxxxxxx'"
+    [src]="'assets/images/ui-icons/lock.svg'"
+    [error]="formManager.hasError('password', 'required') || formManager.hasError('password', 'minlength')"
+    formControlName="password">
+    {{ 'AUTH.PASSWORD' | translate}}
+  </app-input>
+  <label class="error" *ngIf="formManager.hasError('password', 'required')">{{ 'AUTH.FIELD_REQUIRED' | translate }}
+  </label>
+  <label class="error"
+    *ngIf="formManager.hasError('password', 'minlength')">{{ 'AUTH.PASSWORD_LENGTH' | translate }}</label>
+
+  <button type="submit" class="kino-btn-primary" [disabled]="!form.valid">
+    {{ 'AUTH.LOG_IN' | translate}}
+  </button>
+</form>

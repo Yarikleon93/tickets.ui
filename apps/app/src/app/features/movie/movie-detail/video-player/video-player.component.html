@@ -1,0 +1,5 @@
+<youtube-player #player [videoId]="videoId" [height]="height" [width]="width" suggestedQuality="highres"
+  (ready)="playerOnReady()"></youtube-player>
+<div class="play-btn-wrapper" (click)="playVideo()" *ngIf="!isPlaying" @playBtnAnimation>
+  <img class="play-btn" src="assets/images/ui-icons/play-icon.svg">
+</div>

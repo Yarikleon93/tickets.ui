@@ -1,0 +1,19 @@
+<h2>
+  <ng-content></ng-content>
+</h2>
+<app-circular-loader *ngIf="!movies; else content"></app-circular-loader>
+<ng-template #content>
+  <div class="wrapper" *ngIf="movies?.length; else placeholder">
+    <button class="left-arrow" (click)="downOffset()" [class.disabled-arrow]="offset < 1"></button>
+    <div class="container" [style.gridTemplateColumns]="gridTemplateColumns">
+      <app-movie-poster [movie]="item" *ngFor="let item of dataSource" [routerLink]="['/movies/' + item.id]">
+      </app-movie-poster>
+    </div>
+    <button class="right-arrow" (click)="upOffset()" [class.disabled-arrow]="isLastItem"></button>
+  </div>
+  <ng-template #placeholder>
+    <span>
+      {{ "HOMEPAGE.NO_MOVIES" | translate }}
+    </span>
+  </ng-template>
+</ng-template>

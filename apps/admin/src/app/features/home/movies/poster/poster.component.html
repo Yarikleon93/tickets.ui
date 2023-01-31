@@ -1,0 +1,19 @@
+<img [src]="imageService.getPath(movie?.posterUrl)" alt="" class="poster">
+<div class="detail">
+  <div class="info">
+    <span>
+      {{movie?.name}}
+    </span>
+    <span>
+      {{movie?.type}}
+    </span>
+  </div>
+  <div class="btn-wrapper">
+    <button class="kino-btn-primary btn-edit" [routerLink]="['/movies/editor', movie.id]">
+      {{ 'ADMIN.MOVIE.EDIT' | translate }}
+    </button>
+    <button (click)="remove.emit(movie.id)" class="kino-btn btn-delete"><img src="assets/images/ui-icons/delete.svg"
+        alt="">{{ 'ADMIN.MOVIE.DELETE' |
+      translate }}</button>
+  </div>
+</div>

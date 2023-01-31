@@ -1,0 +1,192 @@
+@import "mixins";
+@import "variables";
+@import "classes";
+
+:host {
+  display: block;
+  width: 100%;
+  @extend .admin-adaptive-page-padding;
+}
+
+.form {
+  display: flex;
+  width: 100%;
+  min-width: 256px;
+  .images-list {
+    margin: 0 auto;
+    @include flex-col;
+    .image {
+      position: relative;
+      width: 460px;
+      height: 280px;
+      margin-top: 60px;
+      background-color: #2d2d2d;
+      animation-name: imageAppearance;
+      animation-duration: 300ms;
+      animation-timing-function: ease-out;
+      img {
+        width: 100%;
+        height: 100%;
+        transition: 0.3s;
+      }
+      .btn-remove {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5), 0px 4px 32px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        user-select: none;
+        &:active {
+          &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            content: "";
+            animation-name: btnRemoveActive;
+            animation-duration: 1.5s;
+          }
+        }
+      }
+    }
+    .button-wrapper {
+      width: 100%;
+      .upload-btn {
+        flex-grow: 0;
+        width: min-content;
+        margin: 20px auto 0;
+        padding: 5px 40px;
+        text-align: center;
+        input {
+          position: absolute;
+          width: 0;
+          height: 0;
+          opacity: 0;
+        }
+      }
+    }
+  }
+  .data {
+    @include flex-col;
+    flex-grow: 1;
+    margin: 60px 40px 0;
+    app-input,
+    .textarea-wrapper,
+    .button-container {
+      margin-bottom: 20px;
+    }
+    .textarea-wrapper {
+      @include flex-col;
+      width: 100%;
+      .title {
+        font-style: italic;
+        color: #919191;
+        margin: 5px 0;
+      }
+      .description-textarea {
+        resize: vertical;
+        min-height: 300px;
+        @include kino-scroll;
+        scrollbar-width: thin;
+        transition: min-height 0.25s;
+        &:placeholder-shown {
+          min-height: 166px;
+        }
+      }
+    }
+    .button-container {
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      button {
+        margin-top: 10px;
+      }
+      .cancel-btn {
+        padding: 0 40px;
+      }
+      .add-btn {
+        padding: 0 60px;
+        margin-left: 20px;
+        span {
+          color: inherit;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $small-screen) {
+  .form {
+    .images-list {
+      .image {
+        margin-top: 40px;
+        width: 300px;
+        height: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: $desktop) {
+  .form {
+    .images-list {
+      .image {
+        width: 264px;
+      }
+    }
+    .data {
+      .button-container {
+        display: flex;
+        flex-direction: column-reverse;
+        flex-wrap: initial;
+        margin-left: 0;
+        padding: 0 20px;
+        .add-btn,
+        .cancel-btn {
+          flex-grow: 1;
+          width: 100%;
+          max-width: 400px;
+          padding: 0 30px;
+          margin: 20px auto 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $landscape) {
+  .form {
+    flex-wrap: wrap;
+    .images-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      .image {
+        width: 335px;
+        margin: 20px auto 0;
+      }
+    }
+  }
+}
+
+@keyframes imageAppearance {
+  from {
+    opacity: 0;
+    transform: perspective(200px) translateX(-25%) translateY(-10%) rotateX(-10deg) rotateY(10deg) scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes btnRemoveActive {
+  from {
+    background-color: white;
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}

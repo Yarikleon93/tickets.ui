@@ -1,0 +1,67 @@
+@import 'variables';
+
+@mixin page-content {
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+}
+
+@mixin full-centr {
+  @supports (display: grid) {
+    display: grid;
+    place-items: center;
+  }
+  @supports not (display: grid) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@mixin full-flex-centr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin big-title {
+  font-size: 105px;
+  letter-spacing: -3px;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+@mixin kino-scroll {
+  scrollbar-color: $darkbase-color #232222;
+  scrollbar-arrow-color: transparent;
+  cursor: auto;
+  &::-webkit-scrollbar {
+    width: 20px;
+  }
+  &::-webkit-scrollbar-track-piece {
+    background-color: #232222;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: $darkbase-color;
+    $darker: #8d6e00;
+    background: linear-gradient(
+      to bottom,
+      $darkbase-color calc(50% - 9px),
+      $darker calc(50% - 6px),
+      $darkbase-color calc(50% - 3px),
+      $darker 50%,
+      $darkbase-color calc(50% + 3px),
+      $darker calc(50% + 6px),
+      $darkbase-color calc(50% + 9px)
+    );
+    box-shadow: inset 2px 0 1px $darkbase-color,
+      inset -2px 0 1px $darkbase-color;
+  }
+}

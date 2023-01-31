@@ -1,0 +1,8 @@
+@import "mixins";
+
+:host {
+  @include page-content;
+  @include flex-col;
+  justify-content: space-between;
+  align-items: center;
+}

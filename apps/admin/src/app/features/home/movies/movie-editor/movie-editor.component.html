@@ -1,0 +1,81 @@
+<form [formGroup]="form" autocomplete="off" (ngSubmit)="onSubmit()">
+
+  <div class="image poster">
+    <div class="poster-img">
+      <img class="alternative-img" src="assets/images/ui-icons/icons-inage.svg" />
+      <img class="img" [src]="posterImg" height="200" *ngIf="posterImg" />
+    </div>
+    <label class="kino-btn label-img">
+      <span>{{'ADMIN.MOVIE.ADD_IMAGE' | translate}}</span>
+      <input #poster type="file" formControlName="posterUrl" accept=".jpg"
+        (change)="previewPoster(poster.files)" /></label>
+  </div>
+
+  <div class="data">
+    <app-input class="name-input" [id]="'name'" [type]="'text'" [placeholder]="'ADMIN.MOVIE.ADD_NAME' | translate"
+      formControlName="name"
+      [error]="formManager.hasError('name', 'maxlength') || formManager.hasError('name', 'required') ">
+      {{ 'ADMIN.MOVIE.NAME' | translate }}
+    </app-input>
+
+    <app-input class="type-input" class="type" [id]="'type'" [type]="'text'"
+      [placeholder]="'ADMIN.MOVIE.CHOOSE_TYPE' | translate" formControlName="type"
+      [error]="formManager.hasError('type', 'required')">
+      {{ 'ADMIN.MOVIE.TYPE' | translate }}
+    </app-input>
+
+    <app-input class="duration-imput" [id]="'duration'" [type]="'number'" [placeholder]="'00'"
+      [error]="formManager.hasError('duration', 'required')" formControlName="duration">
+      {{ 'ADMIN.MOVIE.DURATION' | translate }}
+    </app-input>
+
+    <span class="data-span">{{ 'ADMIN.MOVIE.DATE' | translate }}</span>
+
+    <app-input class="start-rental" [id]="'startRental'" [type]="isOnHoverStartRental ? 'date' : 'text'"
+      (mouseenter)="isOnHoverStartRental = true" (mouseleave)="isOnHoverStartRental = false"
+      [placeholder]="'ADMIN.MOVIE.START' | translate" [src]="'assets/images/ui-icons/calendar.svg'"
+      [error]="formManager.hasError('startRental', 'required')" formControlName="startRental">
+      {{ 'ADMIN.MOVIE.START_RENTAL' | translate }}
+    </app-input>
+
+    <app-input class="end-rental" [id]="'endRental'" [type]="isOnHoverEndRental ? 'date' : 'text'"
+      (mouseenter)="isOnHoverEndRental = true" (mouseleave)="isOnHoverEndRental = false"
+      [placeholder]="'ADMIN.MOVIE.END' | translate" [src]="'assets/images/ui-icons/calendar.svg'"
+      [error]="formManager.hasError('endRental', 'required')" formControlName="endRental">
+      {{ 'ADMIN.MOVIE.END_RENTAL' | translate }}
+    </app-input>
+
+    <app-input class="trailerYTvideoId" [id]="'trailerYTvideoId'" [type]="'text'"
+      [placeholder]="'ADMIN.MOVIE.ADD_TRAILER_URL' | translate" formControlName="trailerYTvideoId"
+      [error]="formManager.hasError('trailerYTvideoId', 'required')">
+      {{ 'ADMIN.MOVIE.TRAILER_URL' | translate}}
+    </app-input>
+
+    <span class="description-span">{{'ADMIN.MOVIE.DESCRIPTION' | translate}}</span>
+    <textarea class="description" rows="7" [placeholder]="'ADMIN.MOVIE.ADD_DESCRIPTION' | translate"
+      formControlName="description">
+    </textarea>
+
+    <button type="reset" class="kino-btn">
+      {{ 'ADMIN.MOVIE.CANCEL' | translate }}
+    </button>
+    <button *ngIf="!movieId" type="submit" class="kino-btn-primary" [disabled]="!form.valid">
+      {{ 'ADMIN.MOVIE.ADD' | translate }}
+    </button>
+    <button *ngIf="movieId" type="submit" class="kino-btn-primary" [disabled]="!form.valid">
+      {{ 'ADMIN.MOVIE.SAVE' | translate }}
+    </button>
+  </div>
+
+  <div class="image frame">
+    <div class="poster-img">
+      <img class="alternative-img" src="assets/images/ui-icons/icons-inage.svg" />
+      <img class="img" [src]="frameImg" height="200" *ngIf="frameImg" />
+    </div>
+    <label class="kino-btn label-img">
+      <span>{{'ADMIN.MOVIE.ADD_IMAGE' | translate}}</span>
+      <input #frame type="file" formControlName="frameUrl" accept=".jpg" (change)="previewFrame(frame.files)" />
+    </label>
+  </div>
+
+</form>

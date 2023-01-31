@@ -1,0 +1,13 @@
+<article class="wrapper">
+  <section class="img-container">
+    <img *ngIf="news?.images.length" [src]="imageService.getPath(news?.images[0].url)" alt="">
+  </section>
+  <section class="main-text">
+    <h3 class="header">{{news?.title}}</h3>
+    <h4 class="sub-header">{{news?.subtitle}}</h4>
+  </section>
+  <section class="description-wrapper">
+    <p class="description">{{news?.description}}</p>
+    <ng-content></ng-content>
+  </section>
+</article>

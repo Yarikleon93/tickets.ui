@@ -1,0 +1,21 @@
+<form class="form" [formGroup]="form" autocomplete="off" (ngSubmit)="onSubmit()">
+  <h3 class="header">{{ 'ADMIN.CINEMA.EDITOR.CREATING_HALL' | translate }}</h3>
+  <app-input class="name-input" [placeholder]="'ADMIN.CINEMA.EDITOR.PLACEHOLDERS.HALL_NAME' | translate"
+    [error]="formManager.hasError('name', 'required') || formManager.hasError('name', 'maxlength')"
+    formControlName="name" (change)="onSubmit()">
+    {{'ADMIN.CINEMA.EDITOR.HALL_NAME' | translate }}
+  </app-input>
+  <app-input class="rows-input" [type]="'number'" formControlName="rows" [min]="1" [max]="maxHallSize"
+    [error]="formManager.hasError('rows', 'less') || formManager.hasError('rows', 'more')"
+    [placeholder]="'ADMIN.CINEMA.EDITOR.PLACEHOLDERS.HALL_ROWS' | translate">
+    {{'ADMIN.CINEMA.EDITOR.ROWS_AMOUNT' | translate }}
+  </app-input>
+  <app-input class="cols-input" [type]="'number'" formControlName="cols" [min]="1" [max]="maxHallSize"
+    [error]="formManager.hasError('cols', 'less') || formManager.hasError('cols', 'more')"
+    [placeholder]="'ADMIN.CINEMA.EDITOR.PLACEHOLDERS.HALL_COLS' | translate">
+    {{'ADMIN.CINEMA.EDITOR.COLS_AMOUNT' | translate }}
+  </app-input>
+  <button class="kino-btn-primary submit-btn" type="submit" [disabled]="!form.valid">
+    {{ 'ADMIN.CINEMA.EDITOR.GENERATE_SCHEMA' | translate}}
+  </button>
+</form>

@@ -1,0 +1,9 @@
+<img [src]="imageService.getPath(movie?.posterUrl)" alt="">
+<div class="detail">
+  <span>
+    {{movie?.name}}
+  </span>
+  <span>
+    {{ 'MOVIE_DETAIL.FROM' | translate }} {{ movie ? (movie.startRental | localizedDate) : "" }} {{ 'MOVIE_DETAIL.TILL' | translate }} {{ movie ? (movie.endRental | localizedDate) : "" }}
+  </span>
+</div>

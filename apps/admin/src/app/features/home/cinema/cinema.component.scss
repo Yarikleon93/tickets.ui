@@ -1,0 +1,131 @@
+@import "mixins";
+@import "classes";
+
+:host {
+  width: 100%;
+  @include flex-col;
+}
+
+.hall-list {
+  display: flex;
+  justify-content: space-between;
+  height: min-content;
+  margin-bottom: 20px;
+  padding: 20px 20% 0 10%;
+  .container-wrapper {
+    position: relative;
+    margin-right: 20px;
+    flex-grow: 1;
+    width: 100%;
+    .container {
+      display: flex;
+      align-items: center;
+      @include kino-scroll;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      .hall-name {
+        max-width: 200px;
+        padding: 20px;
+        font-weight: 600;
+        line-height: 1.06;
+        color: #919191;
+        span {
+          color: inherit;
+          font-weight: inherit;
+          line-height: inherit;
+        }
+      }
+    }
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      width: 100%;
+      height: 100%;
+      top: 0;
+      box-shadow: inset 12px 4px 16px $bg-color, inset -12px 4px 16px $bg-color;
+      pointer-events: none;
+      z-index: 3;
+    }
+  }
+  button {
+    padding: 0 40px;
+  }
+}
+
+.schema-wrapper {
+  padding-right: 20%;
+  .schema-container {
+    position: relative;
+    width: min-content;
+    margin: 0 auto;
+    max-width: 100%;
+    .edit-btn-container {
+      padding-right: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: -10px;
+    }
+    .schema {
+      max-width: 100%;
+    }
+  }
+}
+
+.session-section {
+  display: flex;
+  width: 100%;
+  @extend .adaptive-page-padding;
+  .session-list {
+    flex-grow: 1;
+    .movie {
+      margin: 20px 40px 0 0;
+      padding: 20px 0;
+      border-bottom: 2px solid $base-color;
+    }
+  }
+  .calendar-wrapper {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 218px;
+    height: 256px;
+    border: 1px dashed #919191;
+  }
+}
+
+@media (max-width: $desktop) {
+  .schema-wrapper {
+    padding-right: 5%;
+  }
+  .hall-list {
+    padding: 20px 5% 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    width: 100%;
+    .container-wrapper {
+      .container {
+        margin: 0 auto 20px;
+      }
+    }
+    button {
+      width: max-content;
+    }
+  }
+}
+
+@media (max-width: $portrait) {
+  .schema-wrapper {
+    padding-right: 0;
+  }
+  .hall-list {
+    width: 100%;
+    padding: 20px 0;
+    align-items: center;
+    .container-wrapper {
+      width: 80%;
+    }
+  }
+}

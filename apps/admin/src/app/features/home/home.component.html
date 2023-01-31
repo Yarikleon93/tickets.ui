@@ -1,0 +1,26 @@
+<admin-sidebar class="admin-sidebar-desk"></admin-sidebar>
+<div class="router-wrapper" [@routeAnimation]="getAnimationData(routerOutlet)">
+  <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
+<app-sidebar class="admin-sidebar-mob">
+  <a [routerLink]="['movies']" [routerLinkActive]="'active-link'">
+    {{ 'ADMIN.SIDEBAR_ITEMS.MOVIES' | translate }}</a>
+  <a class="subitem" [routerLink]="['movies/editor']" [routerLinkActive]="'active-link'">
+    {{ 'ADMIN.CINEMA.ADD_MOVIE' | translate}}</a>
+  <a [routerLink]="['cinema']" [routerLinkActive]="'active-link'">
+    {{ 'ADMIN.SIDEBAR_ITEMS.HALLS' | translate }}</a>
+  <a class="subitem" [routerLink]="['cinema/editor']" [routerLinkActive]="'active-link'">
+    {{ 'ADMIN.CINEMA.ADD_HALL' | translate}}</a>
+  <a [routerLink]="['tickets']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.TICKETS' | translate }}</a>
+  <a [routerLink]="['landingpage']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.LANDINGPAGE_SETTINGS' |
+    translate }}</a>
+  <a [routerLink]="['bonuses']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.BONUSES' | translate }}</a>
+  <a [routerLink]="['news']" [routerLinkActive]="'active-link'">
+    {{ 'ADMIN.SIDEBAR_ITEMS.NEWS' | translate }}</a>
+  <a class="subitem" [routerLink]="['news/editor']" [routerLinkActive]="'active-link'">{{ 'ADMIN.NEWS.ADD_NEWS' |
+    translate }}</a>
+  <a [routerLink]="['contacts']" [routerLinkActive]="'active-link'">
+    {{ 'ADMIN.SIDEBAR_ITEMS.CONTACTS' | translate}}</a>
+    <a [routerLink]="['rules']" [routerLinkActive]="'active-link'">{{ 'ADMIN.SIDEBAR_ITEMS.RULES' | translate }}</a>
+    <a [routerLink]="['auth']" [routerLinkActive]="'active-link'">{{ 'COMMON.HEADER.OUT' | translate }}</a>
+</app-sidebar>

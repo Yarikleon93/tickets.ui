@@ -1,0 +1,61 @@
+<div class="header">
+  <span>{{'ADMIN.BONUSE.BONUSES' | translate}}</span>
+  <button class="kino-btn-primary add-bonuse-desk" (click)="openEditorModal('editor-modal')">{{'ADMIN.BONUSE.ADD_BONUSE' |
+    translate}}</button>
+</div>
+<div class="wrapper">
+  <app-bonuse-item *ngFor="let bonuse of bonuses; index as i" [bonuse]="bonuse" (editBonuse)="openEditorModal('editor-modal', $event)" (removeModal)="openRemoveModal($event)">
+  </app-bonuse-item>
+</div>
+<app-modal-window [id]="'editor-modal'" style="display: none;" (closed)="resetForm()">
+  <form [formGroup]="form" autocomplete="off" (ngSubmit)="onSubmit('editor-modal')"  class="modal-content">
+    <span class="modal-name">{{'ADMIN.BONUSE.ADD_NEW_PRODUCT' | translate}}</span>
+    <div class="form-container">
+
+      <div class="data">
+        <app-input class="name-input" [id]="'name'" [type]="'text'"
+          [placeholder]="'ADMIN.BONUSE.ADD_NEW_PRODUCT' | translate" formControlName="name"
+          [error]="formManager.hasError('name', 'maxlength') || formManager.hasError('name', 'required') ">
+          {{ 'ADMIN.BONUSE.NAME_PRODUCT' | translate }}
+        </app-input>
+
+        <app-input class="total-input" class="total" [id]="'total'" [type]="'number'" [placeholder]="0"
+          formControlName="total" [error]="formManager.hasError('total', 'required')">
+          {{ 'ADMIN.BONUSE.TOTAL_BONUSES' | translate }}
+        </app-input>
+      </div>
+
+      <div class="image poster">
+        <div class="poster-img">
+          <img class="img" [src]="imageUrl || 'assets/images/ui-icons/icons-inage.svg'" height="200" *ngIf="imageUrl; else imgPlaceholder;"  onerror="this.onerror=null; this.src=imageUrl"/>
+          <ng-template #imgPlaceholder>
+            <img class="alternative-img" src="assets/images/ui-icons/icons-inage.svg" />
+          </ng-template>
+        </div>
+        <label class="kino-btn label-img">
+          <span>{{'ADMIN.BONUSE.ADD_IMAGE' | translate}}</span>
+          <input #poster type="file" formControlName="image" accept=".png, .jpg, .jpeg, .svg"
+            (change)="previewImage(poster.files)" /></label>
+      </div>
+
+    </div>
+    <div class="control-btn">
+      <button class="kino-btn-primary add-btn" type="submit" [disabled]="!form.valid || !imageUrl">
+        {{ 'ADMIN.BONUSE.ADD' | translate }}
+      </button>
+      <button class="kino-btn" type="button" (click)="closeModal('editor-modal')">{{ 'COMMON.BUTTONS.CANCEL' | translate }}</button>
+    </div>
+  </form>
+</app-modal-window>
+<app-modal-window [id]="'remove-modal'" style="display: none;">
+  <div class="remove-modal-content">
+    <h3>{{ 'ADMIN.BONUSE.REMOVE_BONUSE' | translate }}</h3>
+    <p>{{ 'ADMIN.BONUSE.PLACEHOLDERS.ARE_YOU_SHURE_TO_REMOVE' | translate }}</p>
+    <div class="modal-button-container">
+      <button class="kino-btn" (click)="closeModal('remove-modal')">{{ 'COMMON.BUTTONS.CANCEL' | translate }}</button>
+      <button class="kino-btn-primary add-btn" (click)="remove('remove-modal')">
+        {{ 'COMMON.BUTTONS.REMOVE' | translate}}
+      </button>
+    </div>
+  </div>
+</app-modal-window>

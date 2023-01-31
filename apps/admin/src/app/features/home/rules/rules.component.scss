@@ -1,0 +1,57 @@
+@import 'mixins';
+@import 'classes';
+@import 'admin-variables';
+@import 'variables';
+
+:host {
+  @include flex-col;
+  @extend .adaptive-page-padding;
+}
+
+form {
+  width: 100%;
+  .header {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 1.5em;
+  }
+  input {
+    background-color: black;
+  }
+  textarea {
+    overflow-y: auto;
+    @include kino-scroll;
+    width: 100%;
+    height: calc(100vh - $header-height);
+    resize: none;
+  }
+  .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 30px;
+    .cancel {
+      padding: 0 40px;
+    }
+    .save {
+      padding: 0 60px;
+      margin-left: 40px;
+    }
+  }
+}
+
+@media (max-width: $portrait) {
+  form {
+    .button-container {
+      flex-direction: column;
+      align-items: center;
+      .cancel,
+      .save {
+        width: 100%;
+        padding: 0 40px;
+        margin: 0 0 20px;
+        max-width: 480px;
+      }
+    }
+  }
+}

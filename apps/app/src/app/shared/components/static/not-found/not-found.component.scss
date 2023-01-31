@@ -1,0 +1,70 @@
+@import 'variables';
+@import 'mixins';
+
+:host {
+  position: relative;
+  @include page-content;
+  height: auto;
+  @include full-flex-centr;
+}
+
+.logo {
+  position: absolute;
+  top: 40%;
+  left: 22%;
+  width: 40%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+span {
+  user-select: none;
+}
+
+.code {
+  line-height: 1em;
+  margin: 0;
+  position: relative;
+  bottom: 10%;
+  left: 4.5%;
+  color: $base-color;
+  filter: drop-shadow(0 0 3px black);
+  font-size: 25vw;
+  z-index: 2;
+}
+
+.placeholder {
+  z-index: 3;
+  position: absolute;
+  font-size: 24px;
+  margin-bottom: 2em;
+  color: $base-color;
+  line-height: 1em;
+  bottom: -1em;
+}
+
+.viewer {
+  position: absolute;
+  left: -11vmax;
+  z-index: 0;
+  width: 10vmax;
+  animation-name: viewer;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes viewer {
+  from {
+    transform: rotate(0);
+  }
+  75% {
+    left: -3%;
+    transform: rotate(15deg);
+  }
+  to {
+    left: -2%;
+    transform: rotate(20deg);
+  }
+}

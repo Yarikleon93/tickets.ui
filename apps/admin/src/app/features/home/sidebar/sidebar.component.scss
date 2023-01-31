@@ -1,0 +1,35 @@
+@import 'variables';
+@import 'mixins';
+@import 'admin-variables';
+
+:host {
+  @include flex-col;
+  width: $sidebar-width;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 0 20px 60px;
+  .group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .group-stretched {
+    flex-grow: 1;
+  }
+
+  a {
+    padding: 5px 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.06;
+    margin: 15px 0;
+    color: #919191;
+  }
+}

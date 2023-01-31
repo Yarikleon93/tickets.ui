@@ -1,0 +1,30 @@
+<app-circular-loader *ngIf="!banners; else content"></app-circular-loader>
+<ng-template #content>
+  <ng-container *ngFor="let banner of banners; index as i">
+    <div class="slide" *ngIf="i === slider.currentSlide" @sliderAnimation>
+      <div class="background">
+        <img [src]="imageService.getPath(banner.bannerUrl)" alt="">
+        <div class="shadow"></div>
+      </div>
+      <div class="info-wrapper">
+        <div class="info-container">
+          <h1 class="movie-title">{{banner.movie.name}}</h1>
+          <app-movie-info [movie]="banner.movie"></app-movie-info>
+        </div>
+        <div class="btn-container">
+          <button class="kino-btn-primary" [routerLink]="['/movies/' + banner.movie.id]">
+            {{ 'COMMON.BUTTONS.BUY_TICKET' | translate }}
+          </button>
+          <button class="kino-btn" [routerLink]="['/movies/' + banner.movie.id]" [queryParams]="{hasAutoplay: true}">
+            <img src="assets/images/ui-icons/play-icon.svg" alt="">
+            {{ 'COMMON.BUTTONS.WATCH_TRAILER' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <nav>
+    <button (click)="prev()" class="left"></button>
+    <button (click)="next()" class="right"></button>
+  </nav>
+</ng-template>

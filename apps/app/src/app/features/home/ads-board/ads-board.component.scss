@@ -1,0 +1,29 @@
+@import 'variables';
+
+h2 {
+  margin-bottom: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: $desktop) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: $portrait) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: $smartphone) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

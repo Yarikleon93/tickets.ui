@@ -1,0 +1,145 @@
+@import 'variables';
+@import '../../news-common.scss';
+
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid $base-color;
+
+  .img-container {
+    padding-right: 30px;
+    padding-bottom: 15px;
+    grid-column: 1/6;
+    grid-row: 1/3;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .main-text {
+    display: flex;
+    flex-direction: column;
+    grid-column: 6/13;
+  }
+
+  .description-wrapper {
+    grid-column: 6/13;
+
+    .description {
+      width: 100%;
+    }
+  }
+}
+
+@supports (
+  (-webkit-line-clamp: 4) and (-webkit-box-orient: vertical) and
+    (display: -webkit-box)
+) {
+  .wrapper {
+    .description-wrapper {
+      .description {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+@supports not (
+  (-webkit-line-clamp: 4) and (-webkit-box-orient: vertical) and
+    (display: -webkit-box)
+) {
+  .wrapper {
+    .description-wrapper {
+      .description {
+        max-height: 8em;
+        overflow-y: hidden;
+      }
+    }
+  }
+}
+
+@media (max-width: $small-screen) {
+  :host {
+    .wrapper {
+      .img-container {
+        grid-row: 1;
+        grid-column: 1/7;
+
+        img {
+          height: 100%;
+        }
+      }
+
+      .main-text {
+        grid-column: 7/13;
+      }
+
+      .description-wrapper {
+        grid-column: 1/13;
+      }
+    }
+  }
+}
+
+@media (max-width: $landscape) {
+  :host {
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px 30px;
+
+      .img-container {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 10px;
+
+        img {
+          margin-right: 0;
+        }
+      }
+
+      .main-text {
+        width: 100%;
+        text-align: left;
+
+        h3 {
+          font-size: 20px;
+          font-weight: 800;
+        }
+
+        h4 {
+          font-size: $fsize-standart;
+          font-weight: 600;
+        }
+
+        .description {
+          p {
+            font-size: $fsize-standart;
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $smartphone) {
+  :host {
+    .wrapper {
+      .img-container {
+        width: 100%;
+      }
+    }
+  }
+}
